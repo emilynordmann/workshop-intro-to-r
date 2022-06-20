@@ -1,0 +1,65 @@
+# Session 2.2 {#session-2-2}
+
+## Exercises
+
+To consolidate what you've learned so far, use the built-in `starwars` data set to create each of the following:
+
+* A histogram of heights
+* A scatterplot of height v mass with line of best fit
+* A bar chart of counts for gender
+
+`r hide()`
+
+```{r}
+# load data
+data("starwars")
+
+# histogram
+ggplot(starwars, aes(x = height)) +
+  geom_histogram()
+
+# scatterplot
+ggplot(starwars, aes(x = height, y = mass)) +
+  geom_point() +
+  geom_smooth()
+
+# bar chart
+ggplot(starwars, aes(x = gender)) +
+  geom_bar()
+
+```
+
+`r unhide()`
+
+Then use the built-in`gss_cat` data set to create:
+
+* A grouped density plot of age by marital status
+* A frequency plot of age by marital status
+* A violin-boxplot of age by marital status
+
+
+`r hide()`
+
+```{r}
+
+# load data
+data("gss_cat")
+
+# grouped density
+ggplot(gss_cat, aes(x = age, fill = marital)) +
+  geom_density(alpha = .6)
+
+# frequency plot
+ggplot(gss_cat, aes(x = age, colour = marital)) +
+  geom_freqpoly()
+
+# violin-boxplot
+ggplot(gss_cat, aes(x = marital, y = age)) +
+  geom_violin() +
+  geom_boxplot(width = .2)
+
+```
+
+`r unhide()`
+
+Finally, pick your two favourite plots from the above, spend some time adjusting the aesthetics (colours, themes, labels etc.), then combine them using `r pkg("patchwork")`. If you're on Twitter, share them with #PsyTeachR and tag [emilynordmann](https://twitter.com/emilynordmann).

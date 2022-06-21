@@ -119,6 +119,7 @@ You can also install multiple packages at once. Here is the command to install a
 ```r
 packages <- c(
   "tidyverse",  # for everything
+  "psych",      # for some useful things
   "patchwork",  # for multi-part plots
   "ggthemes",   # for themed plots
   "devtools",   # for installing github packages

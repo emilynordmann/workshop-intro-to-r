@@ -31,9 +31,18 @@ Click on the Files tab in the lower right pane to see the contents of the projec
 Depending on your settings, you may also see a directory called `.Rproj.user`, which contains your specific user settings. You can ignore this and other "invisible" files that start with a full stop.
 :::
 
+## Error logs
+
+Coding involves making a **lot** of errors. We've already mentioned this in Section \@ref(help). We weren't joking! Getting good at R really means getting good at spotting typos and finding extra or missing commas. When you're first learning to code, it can be useful to keep an error log. This will feel like it is slowing you down but it will serve you well in the long-run. Not only will it give you a list of common errors and how to fix them, but you'll also start to notice the patterns in the errors you get.
+
+| Code that threw the error | Error message                                  | Explanation                                                        | Code that fixed the error |
+|---------------------------|------------------------------------------------|--------------------------------------------------------------------|---------------------------|
+| read_csv("my_data.csv")   | could not find function read_csv               | I forgot to load the tidyverse before I used the function read_csv | library(tidyverse)        |
+| read_csv("my_data")       | 'my_data\` does not exist in working directory | I forgot to add the file extension .csv to the name of the file.   | read_csv("my_data.csv")   |
+
 ## R Markdown {#rmarkdown}
 
-For this workshop we will use <a class='glossary' target='_blank' title='The R-specific version of markdown: a way to specify formatting, such as headers, paragraphs, lists, bolding, and links, as well as code blocks and inline code.' href='https://psyteachr.github.io/glossary/r#r-markdown'>R Markdown</a>. We won't have time to cover too many of the features of R Markdown but it's an incredibly powerful format that allows you to create fully reproducible reports where all text, code, and analysis is contained within the one document. You can also use it to create websites, online books (like this one), presentations, and Shiny apps. If you'd like to learn more about R Markdown, there's links to additional resources in Section\ \@ref(resources-viz).
+For this workshop we will use <a class='glossary' target='_blank' title='The R-specific version of markdown: a way to specify formatting, such as headers, paragraphs, lists, bolding, and links, as well as code blocks and inline code.' href='https://psyteachr.github.io/glossary/r#r-markdown'>R Markdown</a>. We won't have time to cover too many of the features of R Markdown but it's an incredibly powerful format that allows you to create fully reproducible reports where all text, code, and analysis is contained within the one document. You can also use it to create websites, online books (like this one), presentations, and Shiny apps. If you'd like to learn more about R Markdown, there's links to additional resources in Section \@ref(resources-viz).
 
 ### New document
 
@@ -80,11 +89,11 @@ library(ggthemes)
 
 When you're working in an R Markdown document, there are several ways to run your lines of code.
 
-1. First, you can highlight the code you want to run and then click `Run` -> `Run Selected Line(s)`, however this is tedious and can cause problems if you don't highlight *exactly* the code you want to run.
+1.  First, you can highlight the code you want to run and then click `Run` -\> `Run Selected Line(s)`, however this is tedious and can cause problems if you don't highlight *exactly* the code you want to run.
 
-2. Alternatively, you can press the green "play" button at the top-right of the code chunk and this will run **all** lines of code in that chunk.
+2.  Alternatively, you can press the green "play" button at the top-right of the code chunk and this will run **all** lines of code in that chunk.
 
-3. Even better is to learn some of the keyboard short cuts for R Studio. To run a single line of code, make sure that the cursor is in the line of code you want to run (it can be anywhere) and press `ctrl + enter` or `Cmd + enter` if you're on a Mac. If you want to run all of the code in the code chunk, press `ctrl/cmd + shift + enter`. Learn these short cuts, they will make your life easier!
+3.  Even better is to learn some of the keyboard short cuts for R Studio. To run a single line of code, make sure that the cursor is in the line of code you want to run (it can be anywhere) and press `ctrl + enter` or `Cmd + enter` if you're on a Mac. If you want to run all of the code in the code chunk, press `ctrl/cmd + shift + enter`. Learn these short cuts, they will make your life easier!
 
 Run your code using method 3. You should see the packages load in the console.
 
@@ -92,9 +101,9 @@ Run your code using method 3. You should see the packages load in the console.
 
 Broadly speaking there are three types of data you can load when working in R:
 
-1. Built-in data sets that come with the packages you install that are useful for reproducible demos. Common ones you will see when you Google help documentation are `mtcars` and `diamonds`.
-2. Data sets stored online and accessed via a URL.
-3. Data sets stored locally on your computer.
+1.  Built-in data sets that come with the packages you install that are useful for reproducible demos. Common ones you will see when you Google help documentation are `mtcars` and `diamonds`.
+2.  Data sets stored online and accessed via a URL.
+3.  Data sets stored locally on your computer.
 
 We'll start with 1 and move to 2 and 3 soon.
 
@@ -126,7 +135,7 @@ You can also use the <code><span class='fu'><a target='_blank' href='https://rdr
 data("starwars")
 ```
 
-You can now use this data. Insert a new heading (##) named "My first plot". The underneath it, create a new code chunk, and copy, paste, and run the below code. You may not understand this yet, but you will by the end of the session.
+You can now use this data. Insert a new heading (\##) named "My first plot". The underneath it, create a new code chunk, and copy, paste, and run the below code. You may not understand this yet, but you will by the end of the session.
 
 
 ```r
@@ -136,7 +145,6 @@ ggplot(starwars, aes(x = mass)) +
   labs(title = "Mass of Star Wars characters",
        subtitle = "Original trilogy")
 ```
-
 
 ### Online sources {#loading-online}
 
@@ -153,23 +161,23 @@ survey_data <- read_csv("https://psyteachr.github.io/ads-v1/data/survey_data.csv
 ::: {.warning data-latex=""}
 If you get an error message that looks like:
 
-> Error in read_csv("https://psyteachr.github.io/ads-v1/data/survey_data.csv") :  
->  could not find function "read_csv"
+> Error in read_csv("<https://psyteachr.github.io/ads-v1/data/survey_data.csv>") :\
+> could not find function "read_csv"
 
 This means that you have not loaded tidyverse. Check that `library(tidyverse)` is in the setup chunk and that you have run the setup chunk.
 :::
 
 This data is simulated data for a call centre customer satisfaction survey. The first thing you should do when you need to plot data is to get familiar with what all of the rows (observations) and columns (variables) mean. Sometimes this is obvious, and sometimes it requires help from the data provider. Here, each row represents one call to the centre.
 
-* `caller_id` is a unique ID for each caller
-* `employee_id` is a unique ID for each employee taking calls
-* `call_start` is the date and time that the call arrived
-* `wait_time` is the number of seconds the caller had to wait
-* `call_time` is the number of seconds the call lasted after the employee picked up
-* `issue_category` is whether the issue was tech, sales, returns, or other
-* `satisfaction` is the customer satisfaction rating on a scale from 1 (very unsatisfied) to 5 (very satisfied)
+-   `caller_id` is a unique ID for each caller
+-   `employee_id` is a unique ID for each employee taking calls
+-   `call_start` is the date and time that the call arrived
+-   `wait_time` is the number of seconds the caller had to wait
+-   `call_time` is the number of seconds the call lasted after the employee picked up
+-   `issue_category` is whether the issue was tech, sales, returns, or other
+-   `satisfaction` is the customer satisfaction rating on a scale from 1 (very unsatisfied) to 5 (very satisfied)
 
-Create another heading (##) named "My second plot", another code chunk below it, and copy, paste, and run the code below.
+Create another heading (\##) named "My second plot", another code chunk below it, and copy, paste, and run the code below.
 
 
 ```r
@@ -210,21 +218,19 @@ Ok, let's get started properly.
 
 There are multiple approaches to data visualisation in R; in this workshop we will use the popular package <code class='package'>ggplot2</code>, which is part of the larger `tidyverse` collection of packages. A grammar of graphics (the "gg" in "ggplot") is a standardised way to describe the components of a graphic. <code class='package'>ggplot2</code> uses a layered grammar of graphics, in which plots are built up in a series of layers. It may be helpful to think about any picture as having multiple elements that sit semi-transparently over each other. A good analogy is old Disney movies where artists would create a background and then add moveable elements on top of the background via transparencies.
 
-Figure\ \@ref(fig:layers) displays the evolution of a simple scatterplot using this layered approach. First, the plot space is built (layer 1); the variables are specified (layer 2); the type of visualisation (known as a `geom`) that is desired for these variables is specified (layer 3) - in this case `geom_point()` is called to visualise individual data points; a second geom is added to include a line of best fit (layer 4), the axis labels are edited for readability (layer 5), and finally, a theme is applied to change the overall appearance of the plot (layer 6).
+Figure \@ref(fig:layers) displays the evolution of a simple scatterplot using this layered approach. First, the plot space is built (layer 1); the variables are specified (layer 2); the type of visualisation (known as a `geom`) that is desired for these variables is specified (layer 3) - in this case `geom_point()` is called to visualise individual data points; a second geom is added to include a line of best fit (layer 4), the axis labels are edited for readability (layer 5), and finally, a theme is applied to change the overall appearance of the plot (layer 6).
 
 <div class="figure" style="text-align: center">
 <img src="03-session1.1_files/figure-html/layers-1.png" alt="Evolution of a layered plot" width="100%" />
 <p class="caption">(\#fig:layers)Evolution of a layered plot</p>
 </div>
 
-Importantly, each layer is independent and independently customisable. For example, the size, colour and position of each component can be adjusted, or one could, for example, remove the first geom (the data points) to only visualise the line of best fit, simply by removing the layer that draws the data points (Figure\ \@ref(fig:remove-layer)). The use of layers makes it easy to build up complex plots step-by-step, and to adapt or extend plots from existing code.
-
+Importantly, each layer is independent and independently customisable. For example, the size, colour and position of each component can be adjusted, or one could, for example, remove the first geom (the data points) to only visualise the line of best fit, simply by removing the layer that draws the data points (Figure \@ref(fig:remove-layer)). The use of layers makes it easy to build up complex plots step-by-step, and to adapt or extend plots from existing code.
 
 <div class="figure" style="text-align: center">
 <img src="03-session1.1_files/figure-html/remove-layer-1.png" alt="Final plot with scatterplot layer removed." width="100%" />
 <p class="caption">(\#fig:remove-layer)Final plot with scatterplot layer removed.</p>
 </div>
-
 
 ## Plot setup
 
@@ -273,7 +279,7 @@ ggplot(survey_data,  aes(wait_time, call_time))
 
 ### Geoms
 
-Now we can add our plot elements in layers. These are referred to as <a class='glossary' target='_blank' title='The geometric style in which data are displayed, such as boxplot, density, or histogram.' href='https://psyteachr.github.io/glossary/g#geom'>geoms</a> and their functions start with `geom_`. You **add** layers onto the base plot created by `ggplot()` with a plus (`+`). 
+Now we can add our plot elements in layers. These are referred to as <a class='glossary' target='_blank' title='The geometric style in which data are displayed, such as boxplot, density, or histogram.' href='https://psyteachr.github.io/glossary/g#geom'>geoms</a> and their functions start with `geom_`. You **add** layers onto the base plot created by `ggplot()` with a plus (`+`).
 
 
 ```r
@@ -323,7 +329,6 @@ ggplot(survey_data, aes(x = wait_time, y = call_time)) +
   geom_point() # scatterplot
 ```
 
-
 <div class="figure" style="text-align: center">
 <img src="03-session1.1_files/figure-html/build-plot-geom2-1.png" alt="Points first versus line first." width="100%" />
 <p class="caption">(\#fig:build-plot-geom2)Points first versus line first.</p>
@@ -356,7 +361,7 @@ line_first # view second plot
 
 ### Combining plots
 
-One of the reasons to save your plots to objects is so that you can combine multiple plots using functions from the `patchwork` package. The below code produces the above plot by combining the two plots with `+` and then specifying that we want the plots produced on a single row with the `nrow` argument in `plot_layout()`. 
+One of the reasons to save your plots to objects is so that you can combine multiple plots using functions from the `patchwork` package. The below code produces the above plot by combining the two plots with `+` and then specifying that we want the plots produced on a single row with the `nrow` argument in `plot_layout()`.
 
 
 ```r
@@ -429,7 +434,7 @@ ggplot(survey_data, aes(x = wait_time, y = call_time)) +
 </div>
 
 ::: {.dangerous data-latex=""}
-You can also set the `limits` argument inside  the `scale_` functions, but this actually removes any data that falls outside these limits, rather than cropping your plot, and this can change the appearance of certain types of plots like violin plots and density plots.
+You can also set the `limits` argument inside the `scale_` functions, but this actually removes any data that falls outside these limits, rather than cropping your plot, and this can change the appearance of certain types of plots like violin plots and density plots.
 :::
 
 ### Themes
@@ -461,9 +466,9 @@ ggplot(survey_data, aes(x = wait_time, y = call_time)) +
 
 ## Appropriate plots
 
-Now that you know how to build up a plot by layers and customise its appearance, you're ready to learn about some more plot types. Different types of data require different types of plots, so this section is organised by data type. 
+Now that you know how to build up a plot by layers and customise its appearance, you're ready to learn about some more plot types. Different types of data require different types of plots, so this section is organised by data type.
 
-The [ggplot2 cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) is a great resource to help you find plots appropriate to your data, based on how many variables you're plotting and what type they are. The examples below all use the same customer satisfaction data, but each plot communicates something different. 
+The [ggplot2 cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) is a great resource to help you find plots appropriate to your data, based on how many variables you're plotting and what type they are. The examples below all use the same customer satisfaction data, but each plot communicates something different.
 
 We don't expect you to memorise all of the plot types or the methods for customising them, but it will be helpful to try out the code in the examples below for yourself, changing values to test your understanding.
 
@@ -517,7 +522,7 @@ ggplot(survey_data, aes(x = wait_time)) +
   geom_histogram(bins = 5)
 ```
 
-By default, the bars start *centered* on 0, so if `binwidth` is set to 15, the first bar would include -7.5 to 7.5 seconds, which doesn't make much sense. We can set `boundary = 0` so that each bar represents increments of 15 seconds *starting* from 0. 
+By default, the bars start *centered* on 0, so if `binwidth` is set to 15, the first bar would include -7.5 to 7.5 seconds, which doesn't make much sense. We can set `boundary = 0` so that each bar represents increments of 15 seconds *starting* from 0.
 
 
 ```r
@@ -527,7 +532,7 @@ ggplot(survey_data, aes(x = wait_time)) +
 
 <img src="03-session1.1_files/figure-html/unnamed-chunk-16-1.png" width="100%" style="display: block; margin: auto;" />
 
-Finally, the default style of grey bars is ugly, so you can change that by setting the `fill` and `colour`, as well as using `scale_x_continuous()` to update the axis labels. 
+Finally, the default style of grey bars is ugly, so you can change that by setting the `fill` and `colour`, as well as using `scale_x_continuous()` to update the axis labels.
 
 
 ```r
@@ -547,7 +552,7 @@ ggplot(survey_data, aes(x = wait_time)) +
 
 #### Frequency plot
 
-Rather than plotting each bin as a bar, you can connect a line across the top of each bin using a frequency plot. The function `geom_freqpoly()` works the same as `geom_histogram()`, except it can't take a `fill` argument because it's just a line. 
+Rather than plotting each bin as a bar, you can connect a line across the top of each bin using a frequency plot. The function `geom_freqpoly()` works the same as `geom_histogram()`, except it can't take a `fill` argument because it's just a line.
 
 
 ```r
@@ -580,9 +585,9 @@ There are several ways to compare continuous data across groups. Which you choos
 
 #### Subdividing distributions
 
-In previous plots, we have used `fill` purely for visual reasons, e.g., we have changed the colour of the histogram bars to make them look nicer. However, you can also use `fill` to represent another variable so that the colours become meaningful. 
+In previous plots, we have used `fill` purely for visual reasons, e.g., we have changed the colour of the histogram bars to make them look nicer. However, you can also use `fill` to represent another variable so that the colours become meaningful.
 
-Setting the `fill` aesthetic in the mapping will produce different coloured bars for each category of the `fill` variable, in this case `issue_category`. 
+Setting the `fill` aesthetic in the mapping will produce different coloured bars for each category of the `fill` variable, in this case `issue_category`.
 
 
 ```r
@@ -597,7 +602,7 @@ ggplot(survey_data, aes(x = wait_time, fill = issue_category)) +
 <p class="caption">(\#fig:unnamed-chunk-20)Histogram with categories represented by fill.</p>
 </div>
 
-By default, the categories are positioned stacked on top of each other. The function `geom_area()` gives a similar effect when `stat = "bin"`. 
+By default, the categories are positioned stacked on top of each other. The function `geom_area()` gives a similar effect when `stat = "bin"`.
 
 
 ```r
@@ -616,7 +621,7 @@ ggplot(survey_data, mapping = aes(x = wait_time, fill = issue_category)) +
 
 #### Comparing distributions
 
-If you want to compare more than one distribution, you can set the `position` argument of `geom_histogram()` to "dodge" to put the bars for each group next to each other instead of stacking them. However, this can look confusing with several categories. Instead, use`geom_freqpoly()` to plot a line connecting the top of each bin. 
+If you want to compare more than one distribution, you can set the `position` argument of `geom_histogram()` to "dodge" to put the bars for each group next to each other instead of stacking them. However, this can look confusing with several categories. Instead, use`geom_freqpoly()` to plot a line connecting the top of each bin.
 
 
 ```r
@@ -684,7 +689,6 @@ ggplot(survey_data, aes(x = issue_category, y = wait_time)) +
 <p class="caption">(\#fig:box-plot)Basic boxplot.</p>
 </div>
 
-
 #### Combo plots
 
 Violin plots are frequently layered with other geoms that represent the mean or median values in the data. This is a lot of code, to help your understanding a) run it layer by layer to see how it builds up and b) change the values throughout the code
@@ -723,7 +727,7 @@ ggplot(survey_data,  aes(x = issue_category,
 
 ### Two continuous variables
 
-When you want to see how two continuous variables are related, set one as the x-axis and the other as the y-axis. Usually, if one variable causes the other, you plot the cause on the x-axis and the effect on the y-axis. Here, we want to see if longer wait times cause the calls to be longer. 
+When you want to see how two continuous variables are related, set one as the x-axis and the other as the y-axis. Usually, if one variable causes the other, you plot the cause on the x-axis and the effect on the y-axis. Here, we want to see if longer wait times cause the calls to be longer.
 
 #### Scatterplot
 
@@ -742,7 +746,7 @@ ggplot(survey_data, aes(x = wait_time, y = call_time)) +
 
 #### Trendlines
 
-In Figure\ \@ref(fig:layers), we emphasised the relationship between wait time and call time with a trendline created by `geom_smooth()` using the argument `method = lm` ("lm" stands for "linear model" or a straight line relationship). You can also set `method = loess` to visualise a non-linear relationship.
+In Figure \@ref(fig:layers), we emphasised the relationship between wait time and call time with a trendline created by `geom_smooth()` using the argument `method = lm` ("lm" stands for "linear model" or a straight line relationship). You can also set `method = loess` to visualise a non-linear relationship.
 
 
 ```r
@@ -809,7 +813,7 @@ ggplot(survey_data, aes(x = call_time, y = satisfaction)) +
 
 #### Facets
 
-Alternatively, you can use `facet_wrap()` to create a separate plot for each level of satisfaction. `facet_wrap()` uses the tilde (~) symbol, which you can roughly translate as "by", e.g., facet the plot *by* satisfaction rating. The `labeller` function controls the labels above each plot. `label_both` specifies that we want both the variable name (satisfaction) and the value (e.g., 1) printed on the plot to make it easier to read.
+Alternatively, you can use `facet_wrap()` to create a separate plot for each level of satisfaction. `facet_wrap()` uses the tilde (\~) symbol, which you can roughly translate as "by", e.g., facet the plot *by* satisfaction rating. The `labeller` function controls the labels above each plot. `label_both` specifies that we want both the variable name (satisfaction) and the value (e.g., 1) printed on the plot to make it easier to read.
 
 
 ```r
@@ -831,10 +835,8 @@ ggplot(survey_data, aes(x = call_time)) +
 </div>
 
 ::: {.info data-latex=""}
-These are not, by any means, all the plot types that you can make in R. This chapter just gave you a basic overview. The [further resources](#resources-viz) section at the end of this chapter lists many resources, but the [R Graph Gallery](http://www.r-graph-gallery.com/){target="_blank"} is an especially useful one to get inspiration for the kinds of beautiful plots you can make in R. 
+These are not, by any means, all the plot types that you can make in R. This chapter just gave you a basic overview. The [further resources](#resources-viz) section at the end of this chapter lists many resources, but the [R Graph Gallery](http://www.r-graph-gallery.com/){target="_blank"} is an especially useful one to get inspiration for the kinds of beautiful plots you can make in R.
 :::
-
-
 
 ## Glossary {#glossary-day1}
 
@@ -906,15 +908,10 @@ These are not, by any means, all the plot types that you can make in R. This cha
 ## Further Resources {#resources-viz}
 
 -   [R Markdown Cheat Sheet](https://www.rstudio.org/links/r_markdown_cheat_sheet)
--   [ggplot2 cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
-<!--
--   [R Markdown reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
--->
+-   [ggplot2 cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf). <!--
+    -   [R Markdown reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+    -->
 -   [R Markdown Tutorial](https://rmarkdown.rstudio.com/lesson-1.html)
 -   [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, & Garrett Grolemund
 -   [Chapter 27: R Markdown](https://r4ds.had.co.nz/r-markdown.html) of *R for Data Science*
 -   [Project Structure](https://slides.djnavarro.net/project-structure/) by Danielle Navarro
-
-
-
-

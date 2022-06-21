@@ -2,7 +2,7 @@
 title: "Intro to R workshop" # edit
 #subtitle: "optional" 
 author: "Emily Nordmann" # edit
-date: "2022-06-20"
+date: "2022-06-21"
 site: bookdown::bookdown_site
 documentclass: book
 classoption: oneside # for PDFs

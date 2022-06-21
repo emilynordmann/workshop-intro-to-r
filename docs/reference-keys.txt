@@ -83,6 +83,7 @@ resources-intro
 session-1-1
 projects
 project-start
+error-logs
 rmarkdown
 new-document
 code-chunks
@@ -147,6 +148,14 @@ redundant-aesthetics
 advanced-plots
 split-violin-plots
 raincloud-plots
+session-2-1
+set-up-1
+counting-groups
+summarise
+pipes-first
+alternatives
+base-r
+psychdescribe
 session-2-2
 exercises
 glossary

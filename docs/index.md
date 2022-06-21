@@ -2,7 +2,7 @@
 title: "Intro to R workshop" # edit
 #subtitle: "optional" 
 author: "Emily Nordmann" # edit
-date: "2022-06-20"
+date: "2022-06-21"
 site: bookdown::bookdown_site
 documentclass: book
 classoption: oneside # for PDFs
@@ -23,10 +23,6 @@ favicon: images/logos/favicon.ico # replace with your logo
 
 
 # Overview {.unnumbered}
-
-::: small_right
-<img src="images/logos/logo.png" alt="ADS Hex Logo"/>
-:::
 
 Before the workshop it is necessary to work through some prep tasks to ensure that you are ready to go.
 

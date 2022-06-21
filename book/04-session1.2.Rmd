@@ -11,7 +11,7 @@ The first half of the session will consolidate the skills and functions you lear
 
 Open your Workshop project and do the following:
 
-* Create and save a new R Markdown document named Session 2. get rid of the default template text from line 11 onwards.
+* Create and save a new R Markdown document named Session 1.2. get rid of the default template text from line 11 onwards.
 * In your project folder, create a new sub-folder named `data`.
 * Download the simulated dataset from [the Open Science Framework](https://osf.io/m28bz/) and save it in your newly created data folder.
 * Add the below code to the set-up chunk and then run the code to load the packages and data.

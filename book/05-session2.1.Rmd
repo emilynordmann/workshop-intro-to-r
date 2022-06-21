@@ -1,0 +1,218 @@
+
+# Session 2.1 {#session-2-1}
+
+## Set-up
+
+Open your Workshop project and do the following:
+
+* Create and save a new R Markdown document named Session 2.1. get rid of the default template text from line 11 onwards.
+* Add the below code to the set-up chunk and then run the code to load the packages and data.
+
+```{r warning = FALSE, message=FALSE}
+library(tidyverse)
+library(patchwork)
+library(psych)
+dat <- read_csv(file = "data/ldt_data.csv") %>%
+  mutate(language = factor(
+  x = language, # column to translate
+  levels = c(1, 2), # values of the original data in preferred order
+  labels = c("monolingual", "bilingual") # labels for display
+))
+
+dat_long <- pivot_longer(data = dat, 
+                         cols = rt_word:acc_nonword, 
+                         names_sep = "_", 
+                         names_to = c("dv_type", "condition"),
+                         values_to = "dv") %>%
+  pivot_wider(names_from = "dv_type", 
+              values_from = "dv")
+```
+
+## Counting groups
+
+You can calculate and plot some basic descriptive information about the demographics of our sample using the oroginal wide-form dataset without any additional wrangling (i.e., data processing). The code below uses the `%>%` operator and can be read as:
+
+-   Start with the dataset `dat` *and then;*
+
+-   Group it by the variable `language` *and then;*
+
+-   Count the number of observations in each group *and then;*
+
+-   Remove the grouping
+
+```{r demo_stats, eval =FALSE}
+dat %>%
+  group_by(language) %>%
+  count() %>%
+  ungroup()
+```
+
+```{r demo_statsb, echo=FALSE}
+dat %>%
+  group_by(language) %>%
+  count() %>%
+  ungroup() %>%
+  knitr::kable(align = "c")
+```
+
+
+`group_by()` does not result in surface level changes to the dataset, rather, it changes the underlying structure so that if groups are specified, whatever functions called next are performed separately on each level of the grouping variable. This grouping remains in the object that is created so it is important to remove it with `ungroup()` to avoid future operations on the object unknowingly being performed by groups. 
+
+The above code therefore counts the number of observations in each group of the variable `language`. If you just need the total number of observations, you could remove the `group_by()` and `ungroup()` lines, which would perform the operation on the whole dataset, rather than by groups:
+
+```{r demo_stats2, eval=FALSE}
+dat %>%
+  count()
+```
+
+```{r demo_stats2b, echo = FALSE}
+dat %>%
+  count() %>%
+  knitr::kable(align = "c")
+```
+
+## Summarise
+
+Similarly, we may wish to calculate the mean age (and SD) of the sample and we can do so using the function `summarise()` from the `dplyr` tidyverse package.
+
+```{r age1, eval = FALSE}
+dat %>%
+  summarise(mean_age = mean(age),
+            sd_age = sd(age),
+            n_values = n())
+```
+
+```{r age1b, echo = FALSE}
+dat %>%
+  summarise(mean_age = mean(age),
+            sd_age = sd(age),n_values = n()) %>%
+  knitr::kable(align = "c", digits = 2)
+```
+
+This code produces summary data in the form of a column named `mean_age` that contains the result of calculating the mean of the variable `age`. It then creates `sd_age` which does the same but for standard deviation. Finally, it uses the function `n()` to add the number of values used to calculate the statistic in a column named `n_values` - this is a useful sanity check whenever you make summary statistics.
+
+Note that the above code will not save the result of this operation, it will simply output the result in the console. If you wish to save it for future use, you can store it in an object by using the `<-` notation and print it later by typing the object name.
+
+```{r age2}
+age_stats <- dat %>%
+  summarise(mean_age = mean(age),
+            sd_age = sd(age),
+            n_values = n())
+```
+
+Finally, the `group_by()` function will work in the same way when calculating summary statistics -- the output of the function that is called after `group_by()` will be produced for each level of the grouping variable.
+
+```{r demo3, eval=FALSE}
+dat %>%
+  group_by(language) %>%
+  summarise(mean_age = mean(age),
+            sd_age = sd(age),
+            n_values = n()) %>%
+  ungroup()
+```
+
+```{r demo3b, echo=FALSE}
+dat %>%
+  group_by(language) %>%
+  summarise(mean_age = mean(age),
+            sd_age = sd(age),
+            n_values = n()) %>%
+    knitr::kable(align = "c", digits = 2)
+```
+
+## Pipes {#pipes-first}
+
+Before we go further, let's take a quick detour to formally introduce the `r glossary("pipe")`. Pipes allow you to send the output from one function straight into another function. Specifically, they send the result of the function before `%>%` to be the first argument of the function after `%>%`. It can be useful to translate the pipe as "**and then**". It's easier to show than tell, so let's look at an example.
+
+```{r eval = FALSE}
+# without pipe
+rt_pipes <- summarise(dat,
+                      mean_rt = mean(rt_word), 
+                      median_rt = median(rt_word))
+
+# with pipe
+rt_pipes <- dat %>% 
+  summarise(mean_rt = mean(rt_word), 
+            median_rt = median(rt_word))
+```
+
+Notice that `summarise()` no longer needs the first argument to be the data table, it is pulled in from the pipe. The power of the pipe may not be obvious now, but it will soon prove its worth. 
+
+## Alternatives
+
+The method we've used above is pure `r pkg("tidyverse")`. The good thing about this approach is that the output it creates is easy to work with and can be used with a range of different functions (for example, you can calculate a table of descriptives and then use this as the data set for a ggplot). However, there are lots of alternatives and they're useful to know because a) you'll see them when you try to Google for help and b) some of them are easier or have additional functionality.
+
+### Base R
+
+Rather than embedding the functions within `summarise()` you can call the summary functions straight from Base R. Let's also clear up what that `$` notation is doing. The dollar sign allows you to select items from an object, such as columns from a table. The left-hand side is the object, and the right-hand side is the item. So in the below code, we're calculating the mean of the `rt_nonword` column that is present in the data set `dat_long`.
+
+```{r}
+mean(dat_long$rt)
+median(dat_long$rt)
+```
+
+Base R also contains the function `summary()`:
+
+```{r}
+summary(dat)
+```
+
+### psych::describe()
+
+The function `describe()` from the `r pkg("psych")` is incredibly useful because it quickly produces a range of descriptive statistics, including standard error which is otherwise a faff to compute in R because there is no base function for standard error like there is for e.g., `sd()`.
+
+```{r eval = FALSE}
+describe(dat_long)
+```
+
+```{r  echo = FALSE}
+describe(dat_long) %>%
+  kableExtra::kable(align = "c")
+
+```
+
+
+As you can see, `describe()` computes stats for all variables in the data set which probably isn't what you need. Instead, we can use `select()` from the `r pkg("tidyverse")` to select the columns we want to describe and then pass these to `describe()`. We may also want to drop some of the columns in the default `describe()` table which we can again do with `select()` - hopefully the power of the `%>%` begins to be obvious.
+
+```{r}
+describe_table <- dat_long %>%
+  select(rt, acc)%>%
+  describe() %>%
+  select(-vars)
+```
+
+```{r echo = FALSE}
+describe_table %>%
+  kableExtra::kable(align = "c")
+```
+
+
+Finally, because `describe()` isn't tidyverse, we can't use `group_by()` with it however, there is also a grouped version, `describeBy()`. 
+
+```{r}
+describebytable <- dat_long %>%
+  select(language, rt, acc) %>%
+  describeBy(group = "language") 
+```
+
+The object this creates is different to what we've created so far. Rather than a single data frame or tibble, this creates a `r glossary("list")`. Lists can contain multiple objects, datasets, and data types but it does mean they're a little bit harder to work with and we need to use the `$` notation to pull out specific objects in the list before we can manipulate them.
+
+```{r}
+describebytable$monolingual %>%
+  select(-vars) 
+```
+
+
+If you want to get rid of the row that contains language (because the descriptives aren't informative) then it requires a little bit of extra wrangling. The first column is actually stored in the `rownames` rather than in a column so first we have to convert these. Once we have the row names in a column, we can then use `filter()` to get remove it.
+
+```{r}
+rownames_to_column(describebytable$monolingual, var = "names")
+```
+
+
+
+
+
+
+
+

@@ -31,10 +31,6 @@ knitr::write_bib(c(
 
 # Overview {.unnumbered}
 
-::: small_right
-<img src="images/logos/logo.png" alt="ADS Hex Logo"/>
-:::
-
 Before the workshop it is necessary to work through some prep tasks to ensure that you are ready to go.
 
 -   If you don't currently have R or RStudio installed, please work through Chapter \@ref(installing-r).

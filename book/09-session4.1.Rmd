@@ -25,7 +25,7 @@ library(correlation)
 library(psych)
 library(performance)
 library(tidyverse)
-mh <- read_csv("https://raw.githubusercontent.com/PsyTeachR/quant-fun-v2/main/book/data/chpt9/MillerHadenData.csv")
+mh <- read_csv("https://raw.githubusercontent.com/emilynordmann/workshop-intro-to-r/main/book/data/reading_iq.csv")
 ```
 
 
@@ -177,4 +177,5 @@ summary(mod3)
 
 * [Learning Statistical Models Through Simulation in R](https://psyteachr.github.io/stat-models-v1/)
 * [Introduction to GLM](https://psyteachr.github.io/reprores-v2/glm.html)
+* [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse!](https://moderndive.com/)
 

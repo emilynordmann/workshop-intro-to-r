@@ -1,5 +1,146 @@
 # Session 2.2 {#session-2-2}
 
+```{r echo=FALSE}
+library(patchwork)
+```
+
+
+## Test your understanding 1
+
+```{r, include = FALSE}
+bar <- c(answer = "geom_bar", x = "geom_col")
+col <- c(x = "geom_bar", answer = "geom_col")
+```
+
+Here is a small data table.
+
+country             | population      | island
+:-------------------|----------------:|:--------------
+Northern Ireland    | 1,895,510       | Ireland
+Wales               | 3,169,586       | Great Britain
+Republic of Ireland | 4,937,786       | Ireland
+Scotland            | 5,466,000       | Great Britain
+England             | 56,550,138      | Great Britain
+
+::: {.try data-latex=""}
+
+* What geom would you use to plot the population for each of the 5 countries? `r mcq(col)`
+```{r test-counting-categories, echo = FALSE, results='asis'}
+opt <- c(answer = "aes(x = country, y = population)",
+         x = "aes(x = population, y = country)",
+         x = "aes(x = country)",
+         x = "aes(x = island)",
+         x = "aes(y = population)")
+cat("* What mapping would you use? ", longmcq(opt))
+```
+
+* What geom would you use to plot the number of countries on each island? `r mcq(bar)`
+```{r, echo = FALSE, results='asis'}
+opt <- c(x = "aes(x = country, y = population)",
+         x = "aes(x = population, y = country)",
+         x = "aes(x = country)",
+         answer = "aes(x = island)",
+         x = "aes(y = population)")
+cat("* What mapping would you use? ", longmcq(opt))
+```
+:::
+
+## Test your understanding 2
+
+Imagine you have a table of the [population for each country in the world](https://population.un.org/wpp/Download/Standard/Population/){target="_blank"} with the columns `country` and `population`. We'll just look at the 76 countries with populations of less than a million.
+
+```{r test-one-continuous, echo = FALSE}
+# set up quiz answers
+hist <- c(answer = "geom_histogram", x = "geom_freqpoly", x = "geom_density")
+freq <- c(x = "geom_histogram", answer = "geom_freqpoly", x = "geom_density")
+dens <- c(x = "geom_histogram", x = "geom_freqpoly", answer = "geom_density")
+
+# load data
+pop_data <- readxl::read_excel("data/WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES.xlsx", skip = 16) %>%
+  filter(Type == "Country/Area") %>%
+  select(country = 3, population = `2020`) %>%
+  mutate(population = round(as.numeric(population) * 1000)) %>%
+  filter(population < 1e6)
+  
+# make plots
+g <- ggplot(pop_data, aes(x = population)) +
+  scale_x_continuous(breaks = seq(0, 1e6, 1e5),
+                     labels = c(paste0(0:9*100, "K"), "1M")) +
+  scale_y_continuous(name = "")
+
+hist_plot <- g + geom_histogram(binwidth = 1e5, boundary = 0, fill = "white", color = "black")
+freq_plot <- g + geom_freqpoly(binwidth = 1e5, boundary = 0, color = "black") +
+  coord_cartesian(xlim = c(0, 1e6))
+dens_plot <- g + geom_density(color = "black", fill = "white")
+
+dens_plot + hist_plot + freq_plot + 
+  plot_layout(nrow = 3) +
+  plot_annotation(tag_levels = "A")
+
+```
+
+::: {.try data-latex=""}
+
+* What kind of plot is A? `r mcq(dens)`
+* What kind of plot is B? `r mcq(hist)`
+* What kind of plot is C? `r mcq(freq)`
+```{r, echo = FALSE, results='asis'}
+opts <- c(x = "aes(x = country, y = population)",
+          x = "aes(x = population, y = country)",
+          answer = "aes(x = population)",
+          x = "aes(x = population, y = count)")
+cat("* How would you set the mapping for these plots? ", longmcq(opts))
+```
+* What is the `binwidth` of the histogram? `r mcq(c("1", "100", answer = "100K", "1M"))`
+:::
+
+## Test your understanding 3
+
+```{r test-grouped-continuous, echo=FALSE, fig.height = 2.5, message=FALSE, warning=FALSE}
+survey_data <- read_csv("https://psyteachr.github.io/ads-v1/data/survey_data.csv")
+box <- c(x = "geom_box()",
+         answer = "geom_boxplot()",
+         x = "geom_violin()",
+         x = "geom_violinplot()")
+
+violin <- c(x = "geom_box()",
+         x = "geom_boxplot()",
+         answer = "geom_violin()",
+         x = "geom_violinplot()")
+
+median <- c(x = "mean",
+            answer = "median",
+            x = "mode")
+
+e04 <- setNames(faux::make_id(10, "e", 2), rep("x", 10))
+e07 <- e04
+names(e04)[4] <- "answer"
+names(e07)[7] <- "answer"
+
+aes <- sample(c(
+  answer = "aes(x = employee_id, y = call_time, fill = employee_id)",
+  x = "aes(x = employee_id, y = call_time, fill = call_time)",
+  x = "aes(x = employee_id, y = call_time, colour = call_time)",
+  x = "aes(x = employee_id, y = call_time, colour = employee_id)"
+))
+
+g <- ggplot(survey_data, aes(x = employee_id, y = call_time, fill = employee_id)) +
+  guides(fill = "none")
+  
+v <- g + geom_violin(draw_quantiles = 0.5)
+b <- g + geom_boxplot()
+
+v + b + plot_annotation(tag_levels = "A")
+```
+
+::: {.try data-latex=""}
+* How would you create plot A? `r mcq(violin)`
+* How would you create plot B? `r mcq(box)`
+* What does the mapping look like for both plots? `r longmcq(aes)`
+* Which employee tends to have the longest calls? `r mcq(e04)`
+* Which employee has the record longest call? `r mcq(e07)`
+:::
+
 ## Exercises
 
 To consolidate what you've learned so far, use the built-in `starwars` data set to create each of the following:

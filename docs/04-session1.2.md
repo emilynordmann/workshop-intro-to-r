@@ -602,7 +602,7 @@ ggplot(dat_long, aes(x = rt, y = age, colour = condition)) +
 
 <img src="04-session1.2_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" />
 
-## Visualising summary statistis
+## Visualising summary statistics
 
 Commonly, rather than visualising distributions of raw data, researchers will wish to visualise means using a bar chart with error bars. As with SPSS and Excel, `ggplot2` requires you to calculate the summary statistics and then plot the summary. There are at least two ways to do this, in the first you make a table of summary statistics and then plot that table. The second approach is to calculate the statistics within a layer of the plot. That is the approach we will use below. 
 
@@ -792,7 +792,7 @@ ggplot(dat_long, aes(x = condition, y= rt, fill = condition)) +
 
 ## Advanced Plots
 
-For the advanced plots, we will use some custom functions: `geom_split_violin()` and `geom_flat_violin()`, which you can access through the `introdataviz` package. These functions are modified from [@raincloudplots].
+For the advanced plots, we will use some custom functions: `geom_split_violin()` and `geom_flat_violin()`, which you can access through the `introdataviz` package. These functions are modified from Allen et al. (2021).
 
 
 ```r
@@ -868,7 +868,21 @@ ggplot(dat_long, aes(x = "", y = rt, fill = language)) +
 
 <img src="04-session1.2_files/figure-html/unnamed-chunk-20-1.png" width="100%" style="display: block; margin: auto;" />
 
-## Further Resources {#resources-viz}
+## Glossary {#glossary-1-2}
+
+<div class="kable-table">
+
+<table>
+<tbody>
+  <tr>
+
+  </tr>
+</tbody>
+</table>
+
+</div>
+
+## Further Resources {#resources-1-2}
 
 * [Applied Data Skils: Data visualisation](https://psyteachr.github.io/ads-v1/viz.html) (from the PsyTeachR team)
 * [Applied Data Skils: Customising visualisations](https://psyteachr.github.io/ads-v1/custom.html) (from the PsyTeachR team)

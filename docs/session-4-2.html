@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 10 Session 4.2 | Intro to R workshop</title>
+<meta name="author" content="Emily Nordmann">
+<meta name="description" content='10.1 Test your understanding 1  What are the resulting columns for these four examples? budget %&gt;% select(contains("_")) sales_2019, sales_2020sales_2020, expenses_2020,...'>
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta property="og:title" content="Chapter 10 Session 4.2 | Intro to R workshop">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/workshop-dataviz/session-4-2.html">
+<meta property="og:image" content="https://psyteachr.github.io/workshop-dataviz/images/logos/logo.png">
+<meta property="og:description" content='10.1 Test your understanding 1  What are the resulting columns for these four examples? budget %&gt;% select(contains("_")) sales_2019, sales_2020sales_2020, expenses_2020,...'>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 10 Session 4.2 | Intro to R workshop">
+<meta name="twitter:description" content='10.1 Test your understanding 1  What are the resulting columns for these four examples? budget %&gt;% select(contains("_")) sales_2019, sales_2020sales_2020, expenses_2020,...'>
+<meta name="twitter:image" content="https://psyteachr.github.io/workshop-dataviz/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Intro to R workshop</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">1</span> Prep: Installing R</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">2</span> Prep: Intro to R and RStudio</a></li>
+<li><a class="" href="session-1-1.html"><span class="header-section-number">3</span> Session 1.1</a></li>
+<li><a class="" href="session-1-2.html"><span class="header-section-number">4</span> Session 1.2</a></li>
+<li><a class="" href="session-2-1.html"><span class="header-section-number">5</span> Session 2.1</a></li>
+<li><a class="" href="session-2-2.html"><span class="header-section-number">6</span> Session 2.2</a></li>
+<li><a class="" href="session-3-1.html"><span class="header-section-number">7</span> Session 3.1</a></li>
+<li><a class="" href="session-3-2.html"><span class="header-section-number">8</span> Session 3.2</a></li>
+<li><a class="" href="session-4-1.html"><span class="header-section-number">9</span> Session 4.1</a></li>
+<li><a class="active" href="session-4-2.html"><span class="header-section-number">10</span> Session 4.2</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="glossary.html"><span class="header-section-number">A</span> Glossary</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="session-4-2" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Session 4.2<a class="anchor" aria-label="anchor" href="#session-4-2"><i class="fas fa-link"></i></a>
+</h1>
+<div id="test-your-understanding-1-1" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Test your understanding 1<a class="anchor" aria-label="anchor" href="#test-your-understanding-1-1"><i class="fas fa-link"></i></a>
+</h2>
+<div class="try">
+<p>What are the resulting columns for these four examples?</p>
+<ul>
+<li>
+<code>budget %&gt;% select(contains("_"))</code>
+<div id="radio_BVZIYTCTLG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BVZIYTCTLG" value="x"><span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_BVZIYTCTLG" value="x"><span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_BVZIYTCTLG" value="answer"><span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_BVZIYTCTLG" value="x"><span>expenses_2019, expenses_2020</span></label>
+</div>
+</li>
+<li>
+<code>budget %&gt;% select(num_range("expenses_", 2019:2020))</code>
+<div id="radio_BIFMOIWUBU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BIFMOIWUBU" value="x"><span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_BIFMOIWUBU" value="x"><span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_BIFMOIWUBU" value="x"><span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_BIFMOIWUBU" value="answer"><span>expenses_2019, expenses_2020</span></label>
+</div>
+</li>
+<li>
+<code>budget %&gt;% select(starts_with("sales"))</code>
+<div id="radio_DAOHXEBGEP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DAOHXEBGEP" value="answer"><span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_DAOHXEBGEP" value="x"><span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_DAOHXEBGEP" value="x"><span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_DAOHXEBGEP" value="x"><span>expenses_2019, expenses_2020</span></label>
+</div>
+</li>
+<li>
+<code>budget %&gt;% select(ends_with("2020"))</code>
+<div id="radio_GKRMTFHNDH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GKRMTFHNDH" value="x"><span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_GKRMTFHNDH" value="answer"><span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_GKRMTFHNDH" value="x"><span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_GKRMTFHNDH" value="x"><span>expenses_2019, expenses_2020</span></label>
+</div>
+</li>
+</ul>
+</div>
+<div class="try">
+<p>Which IDs are kept from the table below?</p>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:left;">
+grade
+</th>
+<th style="text-align:right;">
+score
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+95
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+84
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<ul>
+<li>
+<code>demo %&gt;% filter(score &lt; 80)</code>
+<select class="webex-select"><option value="blank"></option>
+<option value="x">1, 2</option>
+<option value="x">2</option>
+<option value="answer">3</option>
+<option value="x">3, 4</option></select>
+</li>
+<li>
+<code>demo %&gt;% filter(grade == "A")</code>
+<select class="webex-select"><option value="blank"></option>
+<option value="answer">1, 2</option>
+<option value="x">2</option>
+<option value="x">3</option>
+<option value="x">3, 4</option></select>
+</li>
+<li>
+<code>demo %&gt;% filter(grade != "A")</code>
+<select class="webex-select"><option value="blank"></option>
+<option value="x">1, 2</option>
+<option value="x">2</option>
+<option value="x">3</option>
+<option value="answer">3, 4</option></select>
+</li>
+<li>
+<code>demo %&gt;% filter(score == 91)</code>
+<select class="webex-select"><option value="blank"></option>
+<option value="x">1, 2</option>
+<option value="answer">2</option>
+<option value="x">3</option>
+<option value="x">3, 4</option></select>
+</li>
+</ul>
+</div>
+<div class="try">
+<p>How would you find out the maximum sales for each region?</p>
+<div id="radio_UNRDHZKQKI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UNRDHZKQKI" value="x"><span>
+<pre>budget3 %&gt;%
+  group_by(sales) %&gt;%
+  summarise(max_sales = max(region)</pre>
+</span></label><label><input type="radio" autocomplete="off" name="radio_UNRDHZKQKI" value="x"><span>
+<pre>budget3 %&gt;%
+  group_by(sales) %&gt;%
+  summarise(max_sales = max(sales)</pre>
+</span></label><label><input type="radio" autocomplete="off" name="radio_UNRDHZKQKI" value="x"><span>
+<pre>budget3 %&gt;%
+  group_by(region) %&gt;%
+  summarise(max_sales = max(region)</pre>
+</span></label><label><input type="radio" autocomplete="off" name="radio_UNRDHZKQKI" value="answer"><span>
+<pre>budget3 %&gt;%
+  group_by(region) %&gt;%
+  summarise(max_sales = max(sales)</pre>
+</span></label>
+</div>
+</div>
+</div>
+<div id="exercises-1" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Exercises 1<a class="anchor" aria-label="anchor" href="#exercises-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Let's try some exercises using a simulated dataset from a call centre that notes how long each caller waited for their call to be answered, how long the call then lasted, the issue they were calling about, the employee who answered their call, and their resulting customer satisfaction. Some of these will really push you so don't worry if you have to look at some of the solutions or hints.</p>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># from https://www.kaggle.com/kyanyoga/sample-sales-data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://psyteachr.github.io/ads-v1/data/survey_data.csv"</span><span class="op">)</span></code></pre></div>
+<pre><code>## Rows: 707 Columns: 7
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (3): caller_id, employee_id, issue_category
+## dbl  (3): wait_time, call_time, satisfaction
+## dttm (1): call_start
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div id="creating-new-categories" class="section level3" number="10.2.1">
+<h3>
+<span class="header-section-number">10.2.1</span> Creating new categories<a class="anchor" aria-label="anchor" href="#creating-new-categories"><i class="fas fa-link"></i></a>
+</h3>
+<p>Employees 1-5 were trained by Michael and employees 6-10 were trained by Dwight.</p>
+<ul>
+<li>Create a new column named <code>trainer</code> that lists the trainer for each employee.</li>
+<li>Then, calculate the average satisfaction scores for employees trained by each trainer and visualise the satisfaction scores for each in whatever way you think best.</li>
+</ul>
+<p><code>r hide("Hint")</code>
+To add the trainer column you can use <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> and specify multiple criteria (e.g., if the employee is 1-5, Michael, if the employee is 6-10 Dwight).
+<code>r unhide()</code></p>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># case_when() method</span>
+<span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>trainer <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">employee_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"E01"</span>, <span class="st">"E02"</span>, <span class="st">"E03"</span>, <span class="st">"E04"</span>, <span class="st">"E05"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Michael"</span>,
+                             <span class="va">employee_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"E06"</span>, <span class="st">"E07"</span>, <span class="st">"E08"</span>, <span class="st">"E09"</span>, <span class="st">"E10"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Dwight"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># mean satisfaction scores</span>
+<span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">trainer</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_satisfaction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">satisfaction</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># possible visualisation </span>
+
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">survey_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">satisfaction</span>, fill <span class="op">=</span> <span class="va">trainer</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">trainer</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Satisfaction scores by employee trainer"</span><span class="op">)</span></code></pre></div>
+<img src="10-session4.2_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;"><div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+trainer
+</th>
+<th style="text-align:right;">
+mean_satisfaction
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Dwight
+</td>
+<td style="text-align:right;">
+3.366755
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Michael
+</td>
+<td style="text-align:right;">
+3.088415
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div id="filter-by-calculated-score" class="section level3" number="10.2.2">
+<h3>
+<span class="header-section-number">10.2.2</span> Filter by calculated score<a class="anchor" aria-label="anchor" href="#filter-by-calculated-score"><i class="fas fa-link"></i></a>
+</h3>
+<p>First, calculate the average wait time and then create a dataset named <code>long_wait</code> that just contains data from customers who waited more than the average wait time.</p>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">wait_time</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">long_wait</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">wait_time</span> <span class="op">&gt;</span> <span class="fl">187</span><span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:right;">
+mean
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:right;">
+186.5955
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<p>Create a visualisation that shows how many customers waited more than the average wait time for each employee.</p>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">long_wait</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">employee_id</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-session4.2_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+</div>
+<div id="exercises-2" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Exercises 2<a class="anchor" aria-label="anchor" href="#exercises-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>There's lots of different use cases for the <code>****_join()</code> functions. These exercises will allow you to practice different joins. If you have any examples of where joins might be helpful in your own work, please post them on Teams in the week 6 channel, as having many concrete examples can help distinguish between the different joins.</p>
+<div id="grade-data" class="section level3" number="10.3.1">
+<h3>
+<span class="header-section-number">10.3.1</span> Grade data<a class="anchor" aria-label="anchor" href="#grade-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>The University of Glasgow's Schedule A grading scheme uses a 22-point alphanumeric scale (there's more information in your summative report <a href="https://sway.office.com/k0CnXGd6RjbVokkR" target="_blank">assessment information sheet</a>). Each alphanumeric grade (e.g., B2) has an underlying numeric Grade Point (e.g., 16).</p>
+<p>Often when we're working with student grades they are provided to us in only one of these forms, but we need to be able to go between the two. For example, we need the numeric form in order to be able to calculate descriptive statistics about the mean grade, but we need the alphanumeric form to release to student records.</p>
+<ul>
+<li><p>Download <a href="data/grade_data1.csv" download>grade_data.csv</a>, <a href="data/grade_data2.csv" download>grade_data2.csv</a> and <a href="data/scheduleA.csv" download>scheduleA.csv</a> into your data folder.</p></li>
+<li><p>Read in <code>scheduleA.csv</code> and save it to an object named <code>schedule</code>.</p></li>
+<li><p>Read in <code>grade_data1.csv</code> and save it to an object named <code>grades1</code>.</p></li>
+<li><p>Read in <code>grade_data2.csv</code> and save it to an object named <code>grades2</code>.</p></li>
+</ul>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">schedule</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/scheduleA.csv"</span><span class="op">)</span>
+<span class="va">grades1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/grade_data1.csv"</span><span class="op">)</span> 
+<span class="va">grades2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/grade_data2.csv"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="matching-the-variable-types" class="section level3" number="10.3.2">
+<h3>
+<span class="header-section-number">10.3.2</span> Matching the variable types<a class="anchor" aria-label="anchor" href="#matching-the-variable-types"><i class="fas fa-link"></i></a>
+</h3>
+<p>At UofG, all students are given a GUID, a numeric ID number. However, that ID number is also then combined with the first letter from your surname to create your username that is used with your email address. For example, if your ID is 1234567 and your surname is Nordmann, your username would be 1234567n. From a data wrangling perspective this is very annoying because the numeric ID will be stored as numeric data, but the username will be stored as character because of the letter at the end. <code>grades1</code> has a numeric id whilst <code>grades2</code> has the additional letter. In order to join these datasets, we need to standardise the variables.</p>
+<p>First, remove the letter character from <code>id</code> using the function <code><a href="https://stringr.tidyverse.org/reference/str_replace.html">stringr::str_replace_all()</a></code>, which replaces text that matches a pattern. Here, we're using the pattern <code>"[a-z]"</code>, which matches all lowercase letters a through z, and replacing them with <code>""</code>. See the help for <code>?about_search_regex</code> for more info about how to set patterns (these can get really complex).</p>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">grades1</span> <span class="op">&lt;-</span> <span class="va">grades1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span>
+    <span class="va">id</span>, <span class="co"># the variable you want to search</span>
+    pattern <span class="op">=</span> <span class="st">"[a-z]"</span>, <span class="co"># find all letters a-z</span>
+    replacement <span class="op">=</span> <span class="st">""</span> <span class="co"># replace with nothing</span>
+  <span class="op">)</span><span class="op">)</span>  </code></pre></div>
+<p>Now, transform the data type of <code>id</code> so that it matches the data type in <code>grades2</code>.</p>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># check variable types</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">grades1</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">grades2</span><span class="op">)</span> 
+
+<span class="va">grades1</span> <span class="op">&lt;-</span> <span class="va">grades1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="complete-records" class="section level3" number="10.3.3">
+<h3>
+<span class="header-section-number">10.3.3</span> Complete records<a class="anchor" aria-label="anchor" href="#complete-records"><i class="fas fa-link"></i></a>
+</h3>
+<p>In this example, we want to join the grade data to schedule A so that each student with a grade has both the grade and the grade point. But we also want a complete record of all students on the course, so students with missing grades should still be included in the data.</p>
+<ul>
+<li>Join <code>grades1</code> and <code>scheduleA</code> and store this table in an object named <code>exam_all</code>.</li>
+<li>Do the same for <code>grades2</code> and save it in <code>essay_all</code>.</li>
+<li>Both <code>exam_all</code> and <code>essay_all</code> should have 100 observations of 4 variables.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>You want to keep all of the data from <code>grade_data1</code> and <code>grade_data2</code>, but you only want the alphanumeric grades from <code>schedule</code> for the Grade Point values that exist in <code>grades</code>. E.g., if no-one was awarded an F1, your final dataset shouldn't have that in it.</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">exam_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">grades1</span>, <span class="va">schedule</span>, by <span class="op">=</span> <span class="st">"Points"</span><span class="op">)</span>
+<span class="va">essay_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">grades2</span>, <span class="va">schedule</span>, by <span class="op">=</span> <span class="st">"Points"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="missing-data" class="section level3" number="10.3.4">
+<h3>
+<span class="header-section-number">10.3.4</span> Missing data<a class="anchor" aria-label="anchor" href="#missing-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>Alternatively, you may wish to have a dataset that only contains data for students who submitted each assessment and have a grade. First, run <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> on both <code>exam_all</code> and <code>essay_all</code>.</p>
+<ul>
+<li>How many exam grades are missing? <input class="webex-solveme nospaces" size="2" data-answer='["17"]'>
+</li>
+<li>How many essay grades are missing? <input class="webex-solveme nospaces" size="2" data-answer='["23"]'>
+</li>
+</ul>
+<p>Now, create an object <code>exam_grades</code> that joins together <code>grades1</code> and <code>schedule</code>, but this time the resulting object should only contain data from students who have a grade. Do the same but for <code>grades2</code> and store it in <code>essay_grades</code>.</p>
+<p>Before you do this, given what you know about how many data points are missing in each data set:</p>
+<ul>
+<li>How many observations should <code>exam_grades</code> have? <input class="webex-solveme nospaces" size="2" data-answer='["83"]'>
+</li>
+<li>How many observations should <code>essay_grades</code> have? <input class="webex-solveme nospaces" size="2" data-answer='["77"]'>
+</li>
+</ul>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">exam_grades</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">grades1</span>, <span class="va">schedule</span>, by <span class="op">=</span> <span class="st">"Points"</span><span class="op">)</span>
+<span class="va">essay_grades</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">grades2</span>, <span class="va">schedule</span>, by <span class="op">=</span> <span class="st">"Points"</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="webex-solution">
+<button>
+Alternative solution
+</button>
+<p>It's worth noting that in reality you wouldn't actually go back to the raw data and do another join to get this dataset, you could just remove all the missing response by adding <code>%&gt;% drop_na()</code> to <code>exam_all</code> and <code>essay_all</code>. However, for the purposes of teaching joins, we'll do it this slightly artificial way.</p>
+</div>
+<p>Now, create a dataset <code>completes</code> that joins the grades for students who have a grade for <strong>both</strong> the essay and the exam.</p>
+<ul>
+<li>Because both <code>exam_grades</code> and <code>essay_grades</code> have the variables <code>Assessment</code>, <code>Points</code> and <code>Grades</code> that are named the same, but have different data, you should amend the suffix so that the resulting variables are named <code>Points_exam</code> and <code>Points_essay</code> etc. You may need to consult the help documentation to see an example to figure this out.</li>
+<li>Clean up the file with <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> and only keep the variables <code>id</code>, <code>Grade_exam</code>, and <code>Grade_essay</code>
+</li>
+</ul>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">completes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">exam_grades</span>, <span class="va">essay_grades</span>, 
+                        by <span class="op">=</span> <span class="st">"id"</span>, 
+                        suffix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_exam"</span>, <span class="st">"_essay"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">Grade_exam</span>, <span class="va">Grade_essay</span><span class="op">)</span></code></pre></div>
+</div>
+<ul>
+<li>How many students have a grade for both the exam and the essay? <input class="webex-solveme nospaces" size="2" data-answer='["62"]'>
+</li>
+</ul>
+<p>Now create a dataset <code>no_essay</code> that contains students that have a grade for the exam, but not the essay.</p>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">no_essay</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">exam_grades</span>, <span class="va">essay_grades</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></code></pre></div>
+</div>
+<ul>
+<li>How many students have a grade for the exam but not the essay? <input class="webex-solveme nospaces" size="2" data-answer='["21"]'>
+</li>
+</ul>
+<p>Finally, now make a dataset <code>no_exam</code> that contains students have have a grade for the essay but not the exam</p>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">no_exam</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">essay_grades</span>, <span class="va">exam_grades</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></code></pre></div>
+</div>
+<ul>
+<li>How many students have a grade for the exam but not the essay? <input class="webex-solveme nospaces" size="2" data-answer='["15"]'>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div class="chapter-nav">
+<div class="prev"><a href="session-4-1.html"><span class="header-section-number">9</span> Session 4.1</a></div>
+<div class="next"><a href="glossary.html"><span class="header-section-number">A</span> Glossary</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#session-4-2"><span class="header-section-number">10</span> Session 4.2</a></li>
+<li><a class="nav-link" href="#test-your-understanding-1-1"><span class="header-section-number">10.1</span> Test your understanding 1</a></li>
+<li>
+<a class="nav-link" href="#exercises-1"><span class="header-section-number">10.2</span> Exercises 1</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#creating-new-categories"><span class="header-section-number">10.2.1</span> Creating new categories</a></li>
+<li><a class="nav-link" href="#filter-by-calculated-score"><span class="header-section-number">10.2.2</span> Filter by calculated score</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#exercises-2"><span class="header-section-number">10.3</span> Exercises 2</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#grade-data"><span class="header-section-number">10.3.1</span> Grade data</a></li>
+<li><a class="nav-link" href="#matching-the-variable-types"><span class="header-section-number">10.3.2</span> Matching the variable types</a></li>
+<li><a class="nav-link" href="#complete-records"><span class="header-section-number">10.3.3</span> Complete records</a></li>
+<li><a class="nav-link" href="#missing-data"><span class="header-section-number">10.3.4</span> Missing data</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/10-session4.2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/10-session4.2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    $(solveme[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    $(selects[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+
+  // open rdrr links externally
+  $("a[href^='https://rdrr.io']").click(function(){
+    window.open(this.href);
+    return false;
+  });
+
+  // visible second sidebar in mobile
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
+});
+</script>
+
+</div>
+ <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Intro to R workshop</strong>" was written by Emily Nordmann. It was last built on 2022-07-11.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

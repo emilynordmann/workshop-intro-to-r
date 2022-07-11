@@ -84,6 +84,10 @@
 <li><a class="active" href="session-1-2.html"><span class="header-section-number">4</span> Session 1.2</a></li>
 <li><a class="" href="session-2-1.html"><span class="header-section-number">5</span> Session 2.1</a></li>
 <li><a class="" href="session-2-2.html"><span class="header-section-number">6</span> Session 2.2</a></li>
+<li><a class="" href="session-3-1.html"><span class="header-section-number">7</span> Session 3.1</a></li>
+<li><a class="" href="session-3-2.html"><span class="header-section-number">8</span> Session 3.2</a></li>
+<li><a class="" href="session-4-1.html"><span class="header-section-number">9</span> Session 4.1</a></li>
+<li><a class="" href="session-4-2.html"><span class="header-section-number">10</span> Session 4.2</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="glossary.html"><span class="header-section-number">A</span> Glossary</a></li>
 <li><a class="" href="license.html">License</a></li>
@@ -1064,9 +1068,9 @@ S006
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
 <div class="inline-figure"><img src="04-session1.2_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;"></div>
 </div>
-<div id="visualising-summary-statistis" class="section level2" number="4.8">
+<div id="visualising-summary-statistics" class="section level2" number="4.8">
 <h2>
-<span class="header-section-number">4.8</span> Visualising summary statistis<a class="anchor" aria-label="anchor" href="#visualising-summary-statistis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.8</span> Visualising summary statistics<a class="anchor" aria-label="anchor" href="#visualising-summary-statistics"><i class="fas fa-link"></i></a>
 </h2>
 <p>Commonly, rather than visualising distributions of raw data, researchers will wish to visualise means using a bar chart with error bars. As with SPSS and Excel, <code>ggplot2</code> requires you to calculate the summary statistics and then plot the summary. There are at least two ways to do this, in the first you make a table of summary statistics and then plot that table. The second approach is to calculate the statistics within a layer of the plot. That is the approach we will use below.</p>
 <p>First we present code for making a bar chart. The code for bar charts is here because it is a common visualisation that is familiar to most researchers. However, we would urge you to use a visualisation that provides more transparency about the distribution of the raw data, such as violin-boxplots .</p>
@@ -1233,7 +1237,7 @@ Figure 4.6: Facted violin-boxplot
 <h2>
 <span class="header-section-number">4.12</span> Advanced Plots<a class="anchor" aria-label="anchor" href="#advanced-plots"><i class="fas fa-link"></i></a>
 </h2>
-<p>For the advanced plots, we will use some custom functions: <code>geom_split_violin()</code> and <code>geom_flat_violin()</code>, which you can access through the <code>introdataviz</code> package. These functions are modified from <span class="citation">(<a href="#ref-raincloudplots" role="doc-biblioref"><strong>raincloudplots?</strong></a>)</span>.</p>
+<p>For the advanced plots, we will use some custom functions: <code>geom_split_violin()</code> and <code>geom_flat_violin()</code>, which you can access through the <code>introdataviz</code> package. These functions are modified from Allen et al. (2021).</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># how to install the introdataviz package to get split and half violin plots</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"psyteachr/introdataviz"</span><span class="op">)</span>
@@ -1302,9 +1306,17 @@ Figure 4.6: Facted violin-boxplot
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="04-session1.2_files/figure-html/unnamed-chunk-20-1.png" width="100%" style="display: block; margin: auto;"></div>
 </div>
-<div id="resources-viz" class="section level2" number="4.14">
+<div id="glossary-1-2" class="section level2" number="4.14">
 <h2>
-<span class="header-section-number">4.14</span> Further Resources<a class="anchor" aria-label="anchor" href="#resources-viz"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.14</span> Glossary<a class="anchor" aria-label="anchor" href="#glossary-1-2"><i class="fas fa-link"></i></a>
+</h2>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm"><tbody><tr></tr></tbody></table></div>
+</div>
+</div>
+<div id="resources-1-2" class="section level2" number="4.15">
+<h2>
+<span class="header-section-number">4.15</span> Further Resources<a class="anchor" aria-label="anchor" href="#resources-1-2"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -1566,7 +1578,7 @@ $( document ).ready(function() {
 <li><a class="nav-link" href="#grouped-plots"><span class="header-section-number">4.6</span> Grouped plots</a></li>
 <li><a class="nav-link" href="#accessible-colour-schemes"><span class="header-section-number">4.7</span> Accessible colour schemes</a></li>
 <li>
-<a class="nav-link" href="#visualising-summary-statistis"><span class="header-section-number">4.8</span> Visualising summary statistis</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#visualising-summary-statistics"><span class="header-section-number">4.8</span> Visualising summary statistics</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#grouped-violin-boxplots"><span class="header-section-number">4.8.1</span> Grouped violin-boxplots</a></li>
 <li><a class="nav-link" href="#combined-interaction-plots"><span class="header-section-number">4.8.2</span> Combined interaction plots</a></li>
 </ul>
@@ -1578,7 +1590,8 @@ $( document ).ready(function() {
 <a class="nav-link" href="#advanced-plots"><span class="header-section-number">4.12</span> Advanced Plots</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#split-violin-plots"><span class="header-section-number">4.12.1</span> Split-violin plots</a></li></ul>
 </li>
 <li><a class="nav-link" href="#raincloud-plots"><span class="header-section-number">4.13</span> Raincloud plots</a></li>
-<li><a class="nav-link" href="#resources-viz"><span class="header-section-number">4.14</span> Further Resources</a></li>
+<li><a class="nav-link" href="#glossary-1-2"><span class="header-section-number">4.14</span> Glossary</a></li>
+<li><a class="nav-link" href="#resources-1-2"><span class="header-section-number">4.15</span> Further Resources</a></li>
 </ul>
 
       <div class="book-extra">
@@ -1596,7 +1609,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to R workshop</strong>" was written by Emily Nordmann. It was last built on 2022-06-21.</p>
+    <p>"<strong>Intro to R workshop</strong>" was written by Emily Nordmann. It was last built on 2022-07-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -2,7 +2,7 @@
 title: "Intro to R workshop" # edit
 #subtitle: "optional" 
 author: "Emily Nordmann" # edit
-date: "2022-06-21"
+date: "2022-07-11"
 site: bookdown::bookdown_site
 documentclass: book
 classoption: oneside # for PDFs
@@ -27,7 +27,7 @@ favicon: images/logos/favicon.ico # replace with your logo
 Before the workshop it is necessary to work through some prep tasks to ensure that you are ready to go.
 
 -   If you don't currently have R or RStudio installed, please work through Chapter \@ref(installing-r).
--   If you have R and/or RStudio installed, please skip to Section  \@ref(rstudio-settings) and update to the latest version before the workshop.
+-   If you have R and/or RStudio installed, please skip to Chapter \@ref(rstudio-settings) and update to the latest version before the workshop.
 -   If you have technical issues and cannot install R and RStudio on your machine (e.g., if you don't have admin rights), please sign-up for an [RStudio Cloud](https://rstudio.cloud/) account.
 
 Once you've done one of the above, work through Chapter \@ref(intro) which will introduce you to some basic programming terminology and install the packages we need for the workshop. Depending upon your familiarity with R, this should take 1-2 hours.
@@ -46,8 +46,8 @@ One of the joys of teaching R (or anything for that matter) is that people learn
 | 2.1 | Data summaries                             | Calculate descriptive statistics                                                                  |
 | 2.2 | Recap and quiz + choose your own adventure | Consolidate content so far, independent exercises.                  |
 | 3.1 | Data wrangling                             | Select and filter data, create new variables, dealing with missing data                           |
-| 3.2 | Data tidying                               | Transform data between wide and long-form                                                         |
-| 4.1 | Correlation                                | Perform, visualise, and write-up correlation analysis                                             |
+| 3.2 | Data relations                               | Join datasets together                                                         |
+| 4.1 | Regression                                | Perform and visualise correlation and regression analyses                                             |
 | 4.2 | Recap and quiz + choose your own adventure | Consolidate content so far, independent exercises.                  |
 
 The materials from this workshop are adapted from:

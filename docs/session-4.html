@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 9 Session 4.1 | Intro to R workshop</title>
+
+    <meta name="author" content="Emily Nordmann" />
+  
+   <meta name="description" content="The accompany book for the PsyTeachR intro to R workshop." />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 9 Session 4.1 | Intro to R workshop" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://psyteachr.github.io/workshop-dataviz" />
+  <meta property="og:image" content="https://psyteachr.github.io/workshop-dataviz/images/logos/logo.png" />
+  <meta property="og:description" content="The accompany book for the PsyTeachR intro to R workshop." />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Session 4.1 | Intro to R workshop" />
+  
+  <meta name="twitter:description" content="The accompany book for the PsyTeachR intro to R workshop." />
+  <meta name="twitter:image" content="https://psyteachr.github.io/workshop-dataviz/images/logos/logo.png" />
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.3.1/transition.js"></script>
+    <script src="libs/bs3compat-0.3.1/tabs.js"></script>
+    <script src="libs/bs3compat-0.3.1/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+    <style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+      <link rel="stylesheet" href="include/psyteachr.css" />
+    <link rel="stylesheet" href="include/webex.css" />
+    <link rel="stylesheet" href="include/style.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Intro to R workshop</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="session-4.1" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Session 4.1</h1>
+<p>In this chapter we will use a simulated version of a dataset adapted from <a href="https://drive.google.com/file/d/0B1fyuTuvj3YoaFdUR3FZaXNuNXc/view" target="_blank">Miller and Haden (2013)</a>, Chapter 11, looking at the relationship between four variables: reading ability, intelligence (IQ), the number of minutes per week spent reading at home (Home); and the number of minutes per week spent watching TV at home (TV).</p>
+<div id="set-up-4" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Set-up</h2>
+<p>Open your Workshop project and do the following:</p>
+<ul>
+<li>Create and save a new R Markdown document named Session 4.1. get rid of the default template text from line 11 onwards.</li>
+<li>Load the required packages and data as below.</li>
+</ul>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="session-4.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb197-2"><a href="session-4.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(correlation)</span>
+<span id="cb197-3"><a href="session-4.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb197-4"><a href="session-4.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb197-5"><a href="session-4.html#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb197-6"><a href="session-4.html#cb197-6" aria-hidden="true" tabindex="-1"></a>mh <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/PsyTeachR/quant-fun-v2/main/book/data/chpt9/MillerHadenData.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="corr-a2" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Look at the data</h2>
+<p>If you have loaded in the data correctly then you should be able to have a look at it through one of the various methods we have looked at already.</p>
+<ul>
+<li>Look at your data using the <code>head()</code> function and you should see the following:</li>
+</ul>
+<div class="kable-table">
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Participant
+</th>
+<th style="text-align:right;">
+Abil
+</th>
+<th style="text-align:right;">
+IQ
+</th>
+<th style="text-align:right;">
+Home
+</th>
+<th style="text-align:right;">
+TV
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+643
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+717
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:right;">
+675
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+640
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+608
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+407
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>As you can see, we have five columns and they are:</p>
+<ul>
+<li>the participant number (<code>Participant</code>),</li>
+<li>Reading Ability score (<code>Abil</code>),</li>
+<li>Intelligence score (<code>IQ</code>),</li>
+<li>the number of minutes spent reading at Home per week (<code>Home</code>),</li>
+<li>and the number of minutes spent watching TV per week (<code>TV</code>).</li>
+</ul>
+<p>Here we will we will focus on Reading Ability and IQ but for further practice you can look at other relationships in the optional exercises.</p>
+<p>A probable <a class='glossary' target='_blank' title='A proposed explanation made on the basis of limited evidence as a starting point for further investigation.' href='https://psyteachr.github.io/glossary/h#hypothesis'>hypothesis</a> is that as Intelligence predicts Reading Ability and we'll test this by performing a correlation then linear regression</p>
+</div>
+<div id="descriptive-statistics-and-visualisation" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Descriptive statistics and visualisation</h2>
+<p>First, we'll computer descriptive statistics for our variables of interest using <code>summarise()</code> as we've done previously.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="session-4.html#cb198-1" aria-hidden="true" tabindex="-1"></a>descriptives <span class="ot">&lt;-</span> <span class="fu">summarise</span>(mh, </span>
+<span id="cb198-2"><a href="session-4.html#cb198-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">Abil_mean =</span> <span class="fu">mean</span>(Abil),</span>
+<span id="cb198-3"><a href="session-4.html#cb198-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">Abil_SD =</span> <span class="fu">sd</span>(Abil),</span>
+<span id="cb198-4"><a href="session-4.html#cb198-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">IQ_mean =</span> <span class="fu">mean</span>(IQ),</span>
+<span id="cb198-5"><a href="session-4.html#cb198-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">IQ_SD =</span> <span class="fu">sd</span>(IQ))</span>
+<span id="cb198-6"><a href="session-4.html#cb198-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-7"><a href="session-4.html#cb198-7" aria-hidden="true" tabindex="-1"></a>descriptives</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Abil_mean
+</th>
+<th style="text-align:right;">
+Abil_SD
+</th>
+<th style="text-align:right;">
+IQ_mean
+</th>
+<th style="text-align:right;">
+IQ_SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+54.21
+</td>
+<td style="text-align:right;">
+5.808901
+</td>
+<td style="text-align:right;">
+101.73
+</td>
+<td style="text-align:right;">
+8.317992
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can also then plot the relationship between the two variables on a scatterplot using <code>ggplot()</code>. We'll use <code>geom_jiter()</code> rather than <code>geom_point()</code> as there as a fe overlaping scores.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="session-4.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mh, <span class="fu">aes</span>(<span class="at">x =</span> IQ, <span class="at">y =</span> Abil)) <span class="sc">+</span></span>
+<span id="cb199-2"><a href="session-4.html#cb199-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb199-3"><a href="session-4.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="09-session4.1_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="correlation" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> Correlation</h2>
+<p>There's actually a lot of different packages and functions that you can use to run correlations, we'll use the <code>correlation()</code> function from the <code>correlation</code> package. Remember that for help on any function you can type e.g., <code>?correlation</code> in the console window. The <code>correlation()</code> function requires:</p>
+<ul>
+<li>The name of the data set you are using</li>
+<li>The name of the first variable you want to select for the correlation</li>
+<li>The name of the second variable you want to select for the correlation</li>
+<li>The type of correlation you want to run: e.g. <code>pearson</code>, <code>spearman</code></li>
+<li>The type of NHST tail you want to run: e.g. <code>"less"</code>,<code>"greater"</code>, <code>"two.sided"</code></li>
+</ul>
+<p>In our case, we want to correlate IQ and Abil in the dataset <code>mh</code>, we're going to use a Pearson correlation, and because we have a directional hypothesis (IQ and Abil should be positively correlated), we'll use a one-sided test to increase power.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="session-4.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">correlation</span>(<span class="at">data =</span> mh, </span>
+<span id="cb201-2"><a href="session-4.html#cb201-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">select =</span> <span class="st">&quot;IQ&quot;</span>, </span>
+<span id="cb201-3"><a href="session-4.html#cb201-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">select2 =</span> <span class="st">&quot;Abil&quot;</span>,  </span>
+<span id="cb201-4"><a href="session-4.html#cb201-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, </span>
+<span id="cb201-5"><a href="session-4.html#cb201-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+</div>
+<div id="multiple-correlations" class="section level2" number="9.5">
+<h2><span class="header-section-number">9.5</span> Multiple Correlations</h2>
+<p>We're only going to focus on the relationship between two variables but if you want to conduct correlations between multiple variables in data set it's easy to do with the <code>correlation</code> package.</p>
+<p>The <code>pairs.panels())</code> function comes from the <code>psych</code> library and creates a matrix of scatterplots, with the histograms, and correlation coefficients which you can then use to give you an overview of all the relationships at the one time. So it is useful for checking assumptions in one place.</p>
+<p>The code below:</p>
+<ul>
+<li>Takes the dataset <code>mh</code> and then;</li>
+<li>Uses <code>select()</code> to get rid of the <code>Participant</code> column and then;</li>
+<li>Pipes the remaining data into the <code>pairs.panels()</code> function</li>
+<li>The additional arguments:
+<ul>
+<li><code>ellipses = FALSE</code> turns off the <a href="https://analyse-it.com/docs/user-guide/multivariate/scatter-plot#:~:text=If%20the%20association%20is%20a,more%20the%20variables%20are%20uncorrelated." target="_blank">correlation ellipses</a>,</li>
+<li><code>lm = TRUE</code> use a linear line of best fit,</li>
+<li>`method = "pearson", specifies a Pearson correlation.</li>
+</ul></li>
+</ul>
+<p>There are additional arguments to adjust the plot <code>pairs.panel</code> creates that you can look up in the help documentation if you are interested.</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="session-4.html#cb202-1" aria-hidden="true" tabindex="-1"></a>mh <span class="sc">%&gt;%</span></span>
+<span id="cb202-2"><a href="session-4.html#cb202-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span></span>
+<span id="cb202-3"><a href="session-4.html#cb202-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs.panels</span>(<span class="at">ellipses =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb202-4"><a href="session-4.html#cb202-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">lm =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb202-5"><a href="session-4.html#cb202-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<p><img src="09-session4.1_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>To perform multiple correlations in one go, we will again use the <code>correlation()</code> function but rather than specifying two variables to correlate, you can also provide a data frame that has multiple variables and it will run all possible correlations between the variables. Similar to above, we want to remove the <code>Participant</code> column before we do this.</p>
+<ul>
+<li><code>method</code> controls which correlation is computed, the default is <code>pearson</code> but if you needed to run the non-parametric version you could change this to <code>spearman</code>.<br />
+</li>
+<li><code>p_adjust</code> allows you to apply a correction for multiple comparisons to your correlation analysis.<br />
+</li>
+<li>Because you're running multiple correlations and some may be positive and some may be negative, there is no option to specify a one or two-tailed test.</li>
+</ul>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="session-4.html#cb203-1" aria-hidden="true" tabindex="-1"></a>corr_results <span class="ot">&lt;-</span> mh <span class="sc">%&gt;%</span></span>
+<span id="cb203-2"><a href="session-4.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span></span>
+<span id="cb203-3"><a href="session-4.html#cb203-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, </span>
+<span id="cb203-4"><a href="session-4.html#cb203-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">p_adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
+<span id="cb203-5"><a href="session-4.html#cb203-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb203-6"><a href="session-4.html#cb203-6" aria-hidden="true" tabindex="-1"></a>corr_results</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter1
+</th>
+<th style="text-align:left;">
+Parameter2
+</th>
+<th style="text-align:right;">
+r
+</th>
+<th style="text-align:right;">
+CI
+</th>
+<th style="text-align:right;">
+CI_low
+</th>
+<th style="text-align:right;">
+CI_high
+</th>
+<th style="text-align:right;">
+t
+</th>
+<th style="text-align:right;">
+df_error
+</th>
+<th style="text-align:right;">
+p
+</th>
+<th style="text-align:left;">
+Method
+</th>
+<th style="text-align:right;">
+n_Obs
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Abil
+</td>
+<td style="text-align:left;">
+IQ
+</td>
+<td style="text-align:right;">
+0.1759520
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+-0.0211988
+</td>
+<td style="text-align:right;">
+0.3599308
+</td>
+<td style="text-align:right;">
+1.7694413
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+0.4795853
+</td>
+<td style="text-align:left;">
+Pearson correlation
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Abil
+</td>
+<td style="text-align:left;">
+Home
+</td>
+<td style="text-align:right;">
+0.6483613
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+0.5178973
+</td>
+<td style="text-align:right;">
+0.7493498
+</td>
+<td style="text-align:right;">
+8.4305432
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:left;">
+Pearson correlation
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Abil
+</td>
+<td style="text-align:left;">
+TV
+</td>
+<td style="text-align:right;">
+-0.2755665
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+-0.4477496
+</td>
+<td style="text-align:right;">
+-0.0836776
+</td>
+<td style="text-align:right;">
+-2.8378453
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+0.0331248
+</td>
+<td style="text-align:left;">
+Pearson correlation
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IQ
+</td>
+<td style="text-align:left;">
+Home
+</td>
+<td style="text-align:right;">
+0.1657398
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+-0.0317106
+</td>
+<td style="text-align:right;">
+0.3507398
+</td>
+<td style="text-align:right;">
+1.6637510
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+0.5961413
+</td>
+<td style="text-align:left;">
+Pearson correlation
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IQ
+</td>
+<td style="text-align:left;">
+TV
+</td>
+<td style="text-align:right;">
+0.0332362
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+-0.1642542
+</td>
+<td style="text-align:right;">
+0.2281648
+</td>
+<td style="text-align:right;">
+0.3292037
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:left;">
+Pearson correlation
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home
+</td>
+<td style="text-align:left;">
+TV
+</td>
+<td style="text-align:right;">
+-0.5716290
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+-0.6905170
+</td>
+<td style="text-align:right;">
+-0.4226672
+</td>
+<td style="text-align:right;">
+-6.8967137
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:left;">
+Pearson correlation
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="linear-regression" class="section level2" number="9.6">
+<h2><span class="header-section-number">9.6</span> Linear regression</h2>
+<p>To perform a linear regression is very simple using the function <code>lm()</code> (linear model). First you construct the model, then you use <code>summary()</code> to summarise the results.</p>
+<ul>
+<li><code>~</code> is a tilde and in this context is probably most usefully translated as "by", i.e., predict Ability by IQ using the data in mh.</li>
+</ul>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="session-4.html#cb204-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> Abil <span class="sc">~</span> IQ, <span class="at">data =</span> mh)</span>
+<span id="cb204-2"><a href="session-4.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Abil ~ IQ, data = mh)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -11.1033  -4.4932  -0.6648   4.8215  13.1255 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 41.70975    7.08786   5.885 5.57e-08 ***
+## IQ           0.12288    0.06944   1.769   0.0799 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 5.747 on 98 degrees of freedom
+## Multiple R-squared:  0.03096,    Adjusted R-squared:  0.02107 
+## F-statistic: 3.131 on 1 and 98 DF,  p-value: 0.07993</code></pre>
+</div>
+<div id="assumptions" class="section level2" number="9.7">
+<h2><span class="header-section-number">9.7</span> Assumptions</h2>
+<p>Finally, you can also check that your model meets the assumptions of linear regression using the <code>performance</code> package. This really is an excellent tool as it contains (amongst may other things), a handy wrapper function <code>check_model()</code> that performs all your assumption tests and provides clear and interpretable output:</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="session-4.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(mod)</span></code></pre></div>
+<p><img src="09-session4.1_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>If you get the error <code>Error in grid.Call(C_convert, x, as.integer(whatfrom), as.integer(whatto),  : Viewport has zero dimension(s)</code>, increase the size of the plot pane in RStudio (literally drag and make it bigger). </strong></p>
+</div>
+<div id="multiple-regression" class="section level2" number="9.8">
+<h2><span class="header-section-number">9.8</span> Multiple regression</h2>
+<p>If you want to add in additional predictors, you can do so by adjusting the formula:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="session-4.html#cb207-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> Abil <span class="sc">~</span> IQ <span class="sc">+</span> Home, <span class="at">data =</span> mh) <span class="co"># no interaction</span></span>
+<span id="cb207-2"><a href="session-4.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod2)</span>
+<span id="cb207-3"><a href="session-4.html#cb207-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-4"><a href="session-4.html#cb207-4" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> Abil <span class="sc">~</span> IQ <span class="sc">*</span> Home, <span class="at">data =</span> mh) <span class="co"># with interaction between predictors</span></span>
+<span id="cb207-5"><a href="session-4.html#cb207-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod3)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Abil ~ IQ + Home, data = mh)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -9.6274 -3.2104  0.0216  2.7649 14.5198 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 28.44312    5.72295   4.970 2.88e-06 ***
+## IQ           0.04918    0.05451   0.902    0.369    
+## Home         0.17180    0.02106   8.157 1.25e-12 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.449 on 97 degrees of freedom
+## Multiple R-squared:  0.4252, Adjusted R-squared:  0.4133 
+## F-statistic: 35.88 on 2 and 97 DF,  p-value: 2.171e-12
+## 
+## 
+## Call:
+## lm(formula = Abil ~ IQ * Home, data = mh)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -8.2126 -3.1279 -0.2797  2.5575 14.5648 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept) 67.547054  28.274459   2.389   0.0189 *
+## IQ          -0.333183   0.276187  -1.206   0.2306  
+## Home        -0.151691   0.230066  -0.659   0.5113  
+## IQ:Home      0.003156   0.002235   1.412   0.1612  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.427 on 96 degrees of freedom
+## Multiple R-squared:  0.4369, Adjusted R-squared:  0.4193 
+## F-statistic: 24.83 on 3 and 96 DF,  p-value: 5.633e-12</code></pre>
+
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    $(solveme[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    $(selects[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  update_total_correct();
+}
+
+</script>
+<script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+
+  // open rdrr links externally
+  $("a[href^='https://rdrr.io']").click(function(){
+    window.open(this.href);
+    return false;
+  });
+
+  // visible second sidebar in mobile
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
+});
+</script>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Intro to R workshop</strong>" was written by Emily Nordmann. It was last built on 2022-07-11.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+</body>
+
+</html>

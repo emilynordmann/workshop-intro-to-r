@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Session 3.1 | Intro to R workshop</title>
+<meta name="author" content="Emily Nordmann">
+<meta name="description" content="7.1 Set-up Open your Workshop project and do the following: Create and save a new R Markdown document named Session 3.1. get rid of the default template text from line 11 onwards. Download this...">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Session 3.1 | Intro to R workshop">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/workshop-dataviz/session-3-1.html">
+<meta property="og:image" content="https://psyteachr.github.io/workshop-dataviz/images/logos/logo.png">
+<meta property="og:description" content="7.1 Set-up Open your Workshop project and do the following: Create and save a new R Markdown document named Session 3.1. get rid of the default template text from line 11 onwards. Download this...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Session 3.1 | Intro to R workshop">
+<meta name="twitter:description" content="7.1 Set-up Open your Workshop project and do the following: Create and save a new R Markdown document named Session 3.1. get rid of the default template text from line 11 onwards. Download this...">
+<meta name="twitter:image" content="https://psyteachr.github.io/workshop-dataviz/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Intro to R workshop</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">1</span> Prep: Installing R</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">2</span> Prep: Intro to R and RStudio</a></li>
+<li><a class="" href="session-1-1.html"><span class="header-section-number">3</span> Session 1.1</a></li>
+<li><a class="" href="session-1-2.html"><span class="header-section-number">4</span> Session 1.2</a></li>
+<li><a class="" href="session-2-1.html"><span class="header-section-number">5</span> Session 2.1</a></li>
+<li><a class="" href="session-2-2.html"><span class="header-section-number">6</span> Session 2.2</a></li>
+<li><a class="active" href="session-3-1.html"><span class="header-section-number">7</span> Session 3.1</a></li>
+<li><a class="" href="session-3-2.html"><span class="header-section-number">8</span> Session 3.2</a></li>
+<li><a class="" href="session-4-1.html"><span class="header-section-number">9</span> Session 4.1</a></li>
+<li><a class="" href="session-4-2.html"><span class="header-section-number">10</span> Session 4.2</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="glossary.html"><span class="header-section-number">A</span> Glossary</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="session-3-1" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Session 3.1<a class="anchor" aria-label="anchor" href="#session-3-1"><i class="fas fa-link"></i></a>
+</h1>
+<div id="set-up-2" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Set-up<a class="anchor" aria-label="anchor" href="#set-up-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Open your Workshop project and do the following:</p>
+<ul>
+<li>Create and save a new R Markdown document named Session 3.1. get rid of the default template text from line 11 onwards.</li>
+<li>Download this example data file into your data folder:
+<a href="https://psyteachr.github.io/ads-v1/data/budget.csv" download>budget.csv</a>.</li>
+<li>Download the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">Data transformation cheat sheet</a>.</li>
+</ul>
+</div>
+<div id="wrangling-functions" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Wrangling functions<a class="anchor" aria-label="anchor" href="#wrangling-functions"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data wrangling refers to the process of cleaning, transforming, and restructuring your data to get it into the format you need for analysis and it's something you will spend an awful lot of time doing. A lot of <a class="glossary" target="_blank" title="The process of preparing data for visualisation and statistical analysis." href="https://psyteachr.github.io/glossary/d#data-wrangling">data wrangling</a> is covered by six functions from the <code class="package">dplyr</code> package that is loaded as part of the <code class="package">tidyverse</code>: <code>select</code>, <code>filter</code>, <code>arrange</code>, <code>mutate</code>, <code>summarise</code>, and <code>group_by</code>. We've covered some of these briefly already but repeating these functions with a different dataset will help.</p>
+<p>It's worth highlighting that in this session we're going to cover these common functions and common uses of said functions. However, <code class="package">dplyr</code> (and packages beyond it) has a huge number of additional wrangling functions and each function has many different arguments. Essentially, if you think you should be able to wrangle your data in a particular way that we haven't explicitly shown you, you almost certainly can, it might just take a bit of Googling to find out how.</p>
+<p>We'll use a small example table with the sales, expenses, and satisfaction for two years from four regions over two products. After you load the data, use <code>glimpse(budget)</code> or <code>View(budget)</code> to get familiar with the data.</p>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">budget</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/budget.csv"</span><span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+region
+</th>
+<th style="text-align:left;">
+product
+</th>
+<th style="text-align:right;">
+sales_2019
+</th>
+<th style="text-align:right;">
+sales_2020
+</th>
+<th style="text-align:right;">
+expenses_2019
+</th>
+<th style="text-align:right;">
+expenses_2020
+</th>
+<th style="text-align:left;">
+satisfaction_2019
+</th>
+<th style="text-align:left;">
+satisfaction_2020
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+North
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+2129
+</td>
+<td style="text-align:right;">
+-517
+</td>
+<td style="text-align:right;">
+822
+</td>
+<td style="text-align:right;">
+-897
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:left;">
+very high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+North
+</td>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+723
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+1037
+</td>
+<td style="text-align:right;">
+1115
+</td>
+<td style="text-align:left;">
+very high
+</td>
+<td style="text-align:left;">
+very high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+South
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+1123
+</td>
+<td style="text-align:right;">
+-1450
+</td>
+<td style="text-align:right;">
+1004
+</td>
+<td style="text-align:right;">
+672
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:left;">
+neutral
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+South
+</td>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:right;">
+-945
+</td>
+<td style="text-align:right;">
+-610
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:left;">
+low
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+East
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+-728
+</td>
+<td style="text-align:right;">
+-51
+</td>
+<td style="text-align:right;">
+-801
+</td>
+<td style="text-align:right;">
+-342
+</td>
+<td style="text-align:left;">
+very low
+</td>
+<td style="text-align:left;">
+very low
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+East
+</td>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+-423
+</td>
+<td style="text-align:right;">
+-354
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+2036
+</td>
+<td style="text-align:left;">
+neutral
+</td>
+<td style="text-align:left;">
+high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+West
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+633
+</td>
+<td style="text-align:right;">
+790
+</td>
+<td style="text-align:right;">
+783
+</td>
+<td style="text-align:right;">
+-315
+</td>
+<td style="text-align:left;">
+neutral
+</td>
+<td style="text-align:left;">
+neutral
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+West
+</td>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+1204
+</td>
+<td style="text-align:right;">
+426
+</td>
+<td style="text-align:right;">
+433
+</td>
+<td style="text-align:right;">
+-136
+</td>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:left;">
+low
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="select" class="section level3" number="7.2.1">
+<h3>
+<span class="header-section-number">7.2.1</span> Select<a class="anchor" aria-label="anchor" href="#select"><i class="fas fa-link"></i></a>
+</h3>
+<p>You can select a subset of the columns (variables) in a table to make it easier to view or to prepare a table for display. You can also select columns in a new order.</p>
+<div id="by-name-or-index" class="section level4" number="7.2.1.1">
+<h4>
+<span class="header-section-number">7.2.1.1</span> By name or index<a class="anchor" aria-label="anchor" href="#by-name-or-index"><i class="fas fa-link"></i></a>
+</h4>
+<p>You can select columns by name or number (which is sometimes referred to as the column index). Selecting by number can be useful when the column names are long or complicated.</p>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># select single column by name</span>
+<span class="va">product_dat</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">product</span><span class="op">)</span> 
+
+<span class="co"># select single column by number</span>
+<span class="va">product_dat</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> </code></pre></div>
+<p>You can select each column individually, separated by commas (e.g., <code>region, sales_2019</code>) but you can also select all columns from one to another by separating them with a colon (e.g., <code>sales_2019:expenses_2020</code>).</p>
+<p>The colon notation can be much faster because you don't need to type out each individual variable name, but make sure that you know what order your columns are in and always check the output to make sure you have selected what you intended.</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># select columns individually</span>
+<span class="va">sales2019</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">region</span>, <span class="va">product</span>, <span class="va">sales_2019</span><span class="op">)</span>
+
+<span class="co"># select columns with colon</span>
+<span class="va">sales2019</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">region</span><span class="op">:</span><span class="va">sales_2019</span><span class="op">)</span></code></pre></div>
+<p>You can rename columns at the same time as selecting them by setting <code>new_name = old_col</code>.</p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">regions</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>`Sales Region` <span class="op">=</span> <span class="fl">1</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">regions</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+Sales Region
+</th>
+<th style="text-align:right;">
+sales_2019
+</th>
+<th style="text-align:right;">
+sales_2020
+</th>
+<th style="text-align:right;">
+expenses_2019
+</th>
+<th style="text-align:right;">
+expenses_2020
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+North
+</td>
+<td style="text-align:right;">
+2129
+</td>
+<td style="text-align:right;">
+-517
+</td>
+<td style="text-align:right;">
+822
+</td>
+<td style="text-align:right;">
+-897
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+North
+</td>
+<td style="text-align:right;">
+723
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+1037
+</td>
+<td style="text-align:right;">
+1115
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div id="un-selecting-columns" class="section level4" number="7.2.1.2">
+<h4>
+<span class="header-section-number">7.2.1.2</span> Un-selecting columns<a class="anchor" aria-label="anchor" href="#un-selecting-columns"><i class="fas fa-link"></i></a>
+</h4>
+<p>You can select columns either by telling R which ones you want to keep as in the previous examples, or by specifying which ones you want to exclude by using a minus symbol to un-select columns. You can also use the colon notation to de-select columns, but to do so you need to put parentheses around the span first, e.g., <code>-(sales_2019:expenses_2020)</code>, not <code>-sales_2019:expenses_2020</code>.</p>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># de-select individual columns</span>
+<span class="va">sales</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">expenses_2019</span>, <span class="op">-</span><span class="va">expenses_2020</span><span class="op">)</span>
+
+<span class="co"># de-select a range of columns</span>
+<span class="va">sales</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="va">expenses_2019</span><span class="op">:</span><span class="va">expenses_2020</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="select-helpers" class="section level4" number="7.2.1.3">
+<h4>
+<span class="header-section-number">7.2.1.3</span> Select helpers<a class="anchor" aria-label="anchor" href="#select-helpers"><i class="fas fa-link"></i></a>
+</h4>
+<p>Finally, you can select columns based on criteria about the column names.</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="45%">
+<col width="54%">
+</colgroup>
+<thead><tr class="header">
+<th>function</th>
+<th>definition</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code></td>
+<td>select columns that start with a character string</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with()</a></code></td>
+<td>select columns that end with a character string</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains()</a></code></td>
+<td>select columns that contain a character string</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">num_range()</a></code></td>
+<td>select columns with a name that matches the pattern <code>prefix</code>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div id="filter" class="section level3" number="7.2.2">
+<h3>
+<span class="header-section-number">7.2.2</span> Filter<a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
+</h3>
+<p>Whilst <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> chooses the columns you want to retain, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> chooses the rows to retain by matching row or column criteria.</p>
+<p>You can filter by a single criterion. This criterion can be rows where a certain column's value matches a character value (e.g., "North") or a number (e.g., 9003). It can also be the result of a logical equation (e.g., keep all rows with a specific column value larger than a certain value). The criterion is checked for each row, and if the result is FALSE, the row is removed. You can reverse equations by specifying <code>!=</code> where <code>!</code> means "not".</p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># select all rows where region equals North</span>
+<span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">==</span> <span class="st">"North"</span><span class="op">)</span>
+
+<span class="co"># select all rows where expenses_2020 were exactly equal to 200</span>
+<span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">expenses_2020</span> <span class="op">==</span> <span class="fl">200</span><span class="op">)</span>
+
+<span class="co"># select all rows where sales_2019 was more than 100</span>
+<span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sales_2019</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span>
+
+<span class="co"># everything but the North</span>
+<span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">!=</span> <span class="st">"North"</span><span class="op">)</span></code></pre></div>
+<div class="warning">
+<p>Remember to use <code>==</code> and not <code>=</code> to check if two things are equivalent. A single <code>=</code> assigns the right-hand value to the left-hand variable (much like the <code>&lt;-</code> operator).</p>
+</div>
+<p>You can also select on multiple criteria by separating them by commas (rows will be kept if they match <em>all</em> criteria). Additionally, you can use <code>&amp;</code> ("and") and <code>|</code> ("or") to create complex criteria.</p>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># regions and products with profit in both 2019 and 2020</span>
+<span class="va">profit_both</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span>
+    <span class="va">sales_2019</span> <span class="op">&gt;</span> <span class="va">expenses_2019</span>,
+    <span class="va">sales_2020</span> <span class="op">&gt;</span> <span class="va">expenses_2020</span>
+  <span class="op">)</span>
+
+<span class="co"># the same as above, using &amp; instead of a comma</span>
+<span class="va">profit_both</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span>
+    <span class="va">sales_2019</span> <span class="op">&gt;</span> <span class="va">expenses_2019</span> <span class="op">&amp;</span>
+    <span class="va">sales_2020</span> <span class="op">&gt;</span> <span class="va">expenses_2020</span>
+  <span class="op">)</span>
+
+<span class="co"># regions and products with profit in 2019 or 2020</span>
+<span class="va">profit_either</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span>
+    <span class="va">sales_2019</span> <span class="op">&gt;</span> <span class="va">expenses_2019</span> <span class="op">|</span>
+    <span class="va">sales_2020</span> <span class="op">&gt;</span> <span class="va">expenses_2020</span>
+  <span class="op">)</span>
+
+<span class="co"># 2020 profit greater than 1000</span>
+<span class="va">profit_1000</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sales_2020</span> <span class="op">-</span> <span class="va">expenses_2020</span> <span class="op">&gt;</span> <span class="fl">1000</span><span class="op">)</span></code></pre></div>
+<p>If you want the filter to retain multiple specific values in the same variable, the <a class="glossary" target="_blank" title="A binary operator (%in%) that returns a logical vector indicating if there is a match or not for its left operand." href="https://psyteachr.github.io/glossary/m#match-operator">match operator</a> (<code>%in%</code>) should be used rather than <code>|</code> (or). The <code>!</code> can also be used in combination here, but it is placed before the variable name.</p>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># retain any rows where region is north or south, and where product equals widget</span>
+<span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"North"</span>, <span class="st">"South"</span><span class="op">)</span>,
+         <span class="va">product</span> <span class="op">==</span> <span class="st">"widgets"</span><span class="op">)</span>
+
+<span class="co"># retain any rows where the region is not east or west, and where the product does not equal gadgets</span>
+<span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">region</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"East"</span>, <span class="st">"West"</span><span class="op">)</span>,
+         <span class="va">product</span> <span class="op">!=</span> <span class="st">"gadgets"</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="16%">
+<col width="33%">
+<col width="50%">
+</colgroup>
+<thead><tr class="header">
+<th><a class="glossary" target="_blank" title="A symbol that performs some mathematical or comparative process. " href="https://psyteachr.github.io/glossary/o#operator">Operator</a></th>
+<th>Name</th>
+<th>is TRUE if and only if</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>A &lt; B</code></td>
+<td>less than</td>
+<td>A is less than B</td>
+</tr>
+<tr class="even">
+<td><code>A &lt;= B</code></td>
+<td>less than or equal</td>
+<td>A is less than or equal to B</td>
+</tr>
+<tr class="odd">
+<td><code>A &gt; B</code></td>
+<td>greater than</td>
+<td>A is greater than B</td>
+</tr>
+<tr class="even">
+<td><code>A &gt;= B</code></td>
+<td>greater than or equal</td>
+<td>A is greater than or equal to B</td>
+</tr>
+<tr class="odd">
+<td><code>A == B</code></td>
+<td>equivalence</td>
+<td>A exactly equals B</td>
+</tr>
+<tr class="even">
+<td><code>A != B</code></td>
+<td>not equal</td>
+<td>A does not exactly equal B</td>
+</tr>
+<tr class="odd">
+<td><code>A %in% B</code></td>
+<td>in</td>
+<td>A is an element of vector B</td>
+</tr>
+</tbody>
+</table></div>
+<p>Finally, you can also pass many other functions to filter. For example, the package <code class="package">stringr</code> that is loaded as part of the <code class="package">tidyverse</code> contains many different functions for working with <a class="glossary" target="_blank" title="A piece of text inside of quotes." href="https://psyteachr.github.io/glossary/s#string">strings</a> (character data). For example, you you use <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> to only retain rows where the customer satisfaction rating includes the word "high"</p>
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">satisfaction_2019</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+region
+</th>
+<th style="text-align:left;">
+product
+</th>
+<th style="text-align:right;">
+sales_2019
+</th>
+<th style="text-align:right;">
+sales_2020
+</th>
+<th style="text-align:right;">
+expenses_2019
+</th>
+<th style="text-align:right;">
+expenses_2020
+</th>
+<th style="text-align:left;">
+satisfaction_2019
+</th>
+<th style="text-align:left;">
+satisfaction_2020
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+North
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+2129
+</td>
+<td style="text-align:right;">
+-517
+</td>
+<td style="text-align:right;">
+822
+</td>
+<td style="text-align:right;">
+-897
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:left;">
+very high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+North
+</td>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+723
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+1037
+</td>
+<td style="text-align:right;">
+1115
+</td>
+<td style="text-align:left;">
+very high
+</td>
+<td style="text-align:left;">
+very high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+South
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+1123
+</td>
+<td style="text-align:right;">
+-1450
+</td>
+<td style="text-align:right;">
+1004
+</td>
+<td style="text-align:right;">
+672
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:left;">
+neutral
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Note that <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> is case sensitive so it would not return values of "High" or "HIGH". You can use the function <code><a href="https://rdrr.io/r/base/chartr.html">tolower()</a></code> or <code><a href="https://rdrr.io/r/base/chartr.html">toupper()</a></code> to convert a string to lowercase or uppercase before you search for substring if you need case-insensitive matching.</p>
+<div class="warning">
+<p><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> is incredibly powerful and can allow you to select very specific subsets of data. But, it is also quite dangerous because when you start combining multiple criteria and operators, it's very easy to accidentally specify something slightly different than what you intended. <strong>Always check your output</strong>. If you have a small dataset, then you can eyeball it to see if it looks right. With a larger dataset, you may wish to compute summary statistics or count the number of groups/observations in each variable to verify your filter is correct. There is no level of expertise in coding that can substitute knowing and checking your data.</p>
+</div>
+</div>
+<div id="arrange" class="section level3" number="7.2.3">
+<h3>
+<span class="header-section-number">7.2.3</span> Arrange<a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
+</h3>
+<p>You can sort your dataset using <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>. You will find yourself needing to sort data in R much less than you do in Excel, since you don't need to have rows next to each other in order to, for example, calculate group means. But <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> can be useful when preparing data for display in tables. <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> works on character data where it will sort alphabetically, as well as numeric data where the default is ascending order (smallest to largest). Reverse the order using <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code>.</p>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># arranging the table </span>
+<span class="co"># first by product in alphabetical order</span>
+<span class="co"># then by "region" in reverse alphabetical order</span>
+<span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">product</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+region
+</th>
+<th style="text-align:left;">
+product
+</th>
+<th style="text-align:right;">
+sales_2019
+</th>
+<th style="text-align:right;">
+sales_2020
+</th>
+<th style="text-align:right;">
+expenses_2019
+</th>
+<th style="text-align:right;">
+expenses_2020
+</th>
+<th style="text-align:left;">
+satisfaction_2019
+</th>
+<th style="text-align:left;">
+satisfaction_2020
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+West
+</td>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+1204
+</td>
+<td style="text-align:right;">
+426
+</td>
+<td style="text-align:right;">
+433
+</td>
+<td style="text-align:right;">
+-136
+</td>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:left;">
+low
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+South
+</td>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:right;">
+-945
+</td>
+<td style="text-align:right;">
+-610
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:left;">
+low
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+North
+</td>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+723
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+1037
+</td>
+<td style="text-align:right;">
+1115
+</td>
+<td style="text-align:left;">
+very high
+</td>
+<td style="text-align:left;">
+very high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+East
+</td>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+-423
+</td>
+<td style="text-align:right;">
+-354
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+2036
+</td>
+<td style="text-align:left;">
+neutral
+</td>
+<td style="text-align:left;">
+high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+West
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+633
+</td>
+<td style="text-align:right;">
+790
+</td>
+<td style="text-align:right;">
+783
+</td>
+<td style="text-align:right;">
+-315
+</td>
+<td style="text-align:left;">
+neutral
+</td>
+<td style="text-align:left;">
+neutral
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+South
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+1123
+</td>
+<td style="text-align:right;">
+-1450
+</td>
+<td style="text-align:right;">
+1004
+</td>
+<td style="text-align:right;">
+672
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:left;">
+neutral
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+North
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+2129
+</td>
+<td style="text-align:right;">
+-517
+</td>
+<td style="text-align:right;">
+822
+</td>
+<td style="text-align:right;">
+-897
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:left;">
+very high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+East
+</td>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+-728
+</td>
+<td style="text-align:right;">
+-51
+</td>
+<td style="text-align:right;">
+-801
+</td>
+<td style="text-align:right;">
+-342
+</td>
+<td style="text-align:left;">
+very low
+</td>
+<td style="text-align:left;">
+very low
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div id="mutate" class="section level3" number="7.2.4">
+<h3>
+<span class="header-section-number">7.2.4</span> Mutate<a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
+</h3>
+<p>The function <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> allows you to add new columns or change existing ones by overwriting them by using the syntax <code>new_column = operation</code>. You can add more than one column in the same mutate function by separating the columns with a comma. Once you make a new column, you can use it in further column definitions. For example, the creation of <code>profit</code> below uses the column <code>expenses</code>, which is created above it.</p>
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">budget2</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    sales <span class="op">=</span> <span class="va">sales_2019</span> <span class="op">+</span> <span class="va">sales_2020</span>,
+    expenses <span class="op">=</span> <span class="va">expenses_2019</span> <span class="op">+</span> <span class="va">expenses_2020</span>,
+    profit <span class="op">=</span> <span class="va">sales</span> <span class="op">-</span> <span class="va">expenses</span>,
+    region <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">region</span>, <span class="st">"Office"</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> can also be used in conjunction with other functions and Boolean operators. For example, we can add another column to <code>budget2</code> that states whether a profit was returned that year or overwrite our <code>product</code> variable as a factor. Just like when we used <a class="glossary" target="_blank" title="An expression that evaluates to TRUE or FALSE." href="https://psyteachr.github.io/glossary/b#boolean-expression">Boolean expressions</a> with filter, it will evaluate the equation and return TRUE or FALSE depending on whether the observation meets the criteria.</p>
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">budget2</span> <span class="op">&lt;-</span> <span class="va">budget2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>profit_category <span class="op">=</span> <span class="va">profit</span> <span class="op">&gt;</span> <span class="fl">0</span>,
+         product <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">product</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="warning">
+<p>You can overwrite a column by giving a new column the same name as the old column (see <code>region</code> or <code>product</code>) above. Make sure that you mean to do this and that you aren't trying to use the old column value after you redefine it.</p>
+</div>
+<p>You can also use <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> to specify what values to return, rather than defaulting to TRUE or FALSE:</p>
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">budget3</span> <span class="op">&lt;-</span> <span class="va">budget2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>profit_category <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">profit</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"PROFIT"</span>,
+                                     <span class="va">profit</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"NO PROFIT"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Use it to recode values:</p>
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a column where people get a bonus if customer satisfaction was overall high or very high</span>
+
+<span class="va">bonus</span> <span class="op">&lt;-</span> <span class="va">budget3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>bonus_2019 <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">satisfaction_2019</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"very low"</span>, <span class="st">"low"</span>, <span class="st">"neutral"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"no bonus"</span>,
+                                <span class="va">satisfaction_2019</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"high"</span>, <span class="st">"very high"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"bonus"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>And combine different criteria:</p>
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># new management takes over - people only get a bonus if customer satisfaction was overall high or very high AND if a profit was returned</span>
+
+<span class="va">bonus2</span> <span class="op">&lt;-</span> <span class="va">budget3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>bonus_2020 <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">satisfaction_2020</span> <span class="op">==</span> <span class="st">"high"</span> <span class="op">&amp;</span> 
+                                  <span class="va">profit_category</span> <span class="op">==</span> <span class="st">"PROFIT"</span> <span class="op">~</span> <span class="st">"bonus"</span>,
+                                <span class="va">satisfaction_2020</span> <span class="op">==</span> <span class="st">"very high"</span> <span class="op">&amp;</span> 
+                                  <span class="va">profit_category</span> <span class="op">==</span> <span class="st">"PROFIT"</span> <span class="op">~</span> <span class="st">"bonus"</span>,
+                                <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"No bonus"</span><span class="op">)</span><span class="op">)</span> <span class="co"># set all other values to "no bonus"</span></code></pre></div>
+<p>Just like <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> is incredibly powerful and the scope of what you can create is far beyond what we can cover in this book.</p>
+</div>
+<div id="dplyr-summarise" class="section level3" number="7.2.5">
+<h3>
+<span class="header-section-number">7.2.5</span> Summarise<a class="anchor" aria-label="anchor" href="#dplyr-summarise"><i class="fas fa-link"></i></a>
+</h3>
+<p>We've already used <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> but let's do a quick recap.</p>
+<p>Let's say we want to determine the min and max sales for each year, do we can do by using <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>. This will return a table where the names of the variables (columns) are what we provide on the LHS (e.g., <code>mean_2019</code>) and the values of each cell will be the result of the calculation specified on the RHS. (The better way to do this would be to use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and reshape the data but we'll ignore that for now).</p>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sales</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>min_2019 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">sales_2019</span><span class="op">)</span>,
+            min_2020 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">sales_2020</span><span class="op">)</span>,
+            max_2019 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">sales_2019</span><span class="op">)</span>,
+            max_2020 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">sales_2020</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">sales</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:right;">
+min_2019
+</th>
+<th style="text-align:right;">
+min_2020
+</th>
+<th style="text-align:right;">
+max_2019
+</th>
+<th style="text-align:right;">
+max_2020
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:right;">
+-728
+</td>
+<td style="text-align:right;">
+-1450
+</td>
+<td style="text-align:right;">
+2129
+</td>
+<td style="text-align:right;">
+790
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="dplyr-groupby" class="section level3" number="7.2.6">
+<h3>
+<span class="header-section-number">7.2.6</span> Group By<a class="anchor" aria-label="anchor" href="#dplyr-groupby"><i class="fas fa-link"></i></a>
+</h3>
+<p>We've also already looked at <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> but let's do another example and calculate the min and max sales figures by product - note that the summarise code doesn't change, we just add in a call to <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> before it:</p>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sales_prod</span> <span class="op">&lt;-</span> <span class="va">budget</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">product</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>min_2019 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">sales_2019</span><span class="op">)</span>,
+            min_2020 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">sales_2020</span><span class="op">)</span>,
+            max_2019 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">sales_2019</span><span class="op">)</span>,
+            max_2020 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">sales_2020</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">sales_prod</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+product
+</th>
+<th style="text-align:right;">
+min_2019
+</th>
+<th style="text-align:right;">
+min_2020
+</th>
+<th style="text-align:right;">
+max_2019
+</th>
+<th style="text-align:right;">
+max_2020
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+gadgets
+</td>
+<td style="text-align:right;">
+-423
+</td>
+<td style="text-align:right;">
+-945
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:right;">
+426
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+widgets
+</td>
+<td style="text-align:right;">
+-728
+</td>
+<td style="text-align:right;">
+-1450
+</td>
+<td style="text-align:right;">
+2129
+</td>
+<td style="text-align:right;">
+790
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Note that you can use the other wrangling functions on the summary table, for example:</p>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># arrange by maximum profit</span>
+<span class="va">sales_prod</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">min_2019</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># filter out gadgets</span>
+<span class="va">sales_prod</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">product</span> <span class="op">!=</span> <span class="st">"gadgets"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="missing-values" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> Missing values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you have control over your data, it is always best to keep missing values as empty cells rather than denoting missingness with a word or implausible number. If you used "missing" rather than leaving the cell empty, the entire variable would be read as character data, which means you wouldn't be able to perform mathematical operations like calculating the mean. If you use an implausible number (0 or 999 are common), then you risk these values being included in any calculations as real numbers.</p>
+<p>However, we often don't have control over how the data come to us, so let's run through how to fix this. For this example, we're going to revert to use the lexical decision dataset from session 2.1</p>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"data/ldt_data.csv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>language <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="va">language</span>, <span class="co"># column to translate</span>
+  levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="co"># values of the original data in preferred order</span>
+  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"monolingual"</span>, <span class="st">"bilingual"</span><span class="op">)</span> <span class="co"># labels for display</span>
+<span class="op">)</span><span class="op">)</span>
+
+<span class="va">dat_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>, 
+                         cols <span class="op">=</span> <span class="va">rt_word</span><span class="op">:</span><span class="va">acc_nonword</span>, 
+                         names_sep <span class="op">=</span> <span class="st">"_"</span>, 
+                         names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dv_type"</span>, <span class="st">"condition"</span><span class="op">)</span>,
+                         values_to <span class="op">=</span> <span class="st">"dv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="st">"dv_type"</span>, 
+              values_from <span class="op">=</span> <span class="st">"dv"</span><span class="op">)</span></code></pre></div>
+<p>This dataset doesn't have any missing values so let's introduce some and pretend that the imaginary computer we used to record reaction times didn't record any data for RTs below 350ms and the student intern we hired didn't quite follow the instructions properly and instead of leaving the cells blank, they have entered this missing data as 0.</p>
+<p>Somewhat unintuitively, there are different types of NAs under the surface so you have to tell <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> which one to use (<code>NA_real_</code>, <code>NA_complex</code>, <code>NA_character_</code>, <code>NA_integer_</code>), in our case, rt is a real number.</p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat_missing</span> <span class="op">&lt;-</span> <span class="va">dat_long</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rt <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">rt</span> <span class="op">&lt;</span> <span class="fl">350</span> <span class="op">~</span> <span class="cn">NA_real_</span>, <span class="co"># when rt is less than 350 replace with NA</span>
+                        <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">rt</span><span class="op">)</span>, <span class="co"># otherwise, use the value in the column rt (i.e., no change)</span>
+         acc <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"S001"</span>, <span class="st">"S002"</span>, <span class="st">"S003"</span>, <span class="st">"S004"</span>, <span class="st">"S005"</span><span class="op">)</span> <span class="op">~</span> <span class="fl">0</span>, <span class="co"># when id is one of these listed, replace with 0</span>
+                         <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">acc</span><span class="op">)</span><span class="op">)</span> <span class="co"># otherwise use the value in the column acc</span></code></pre></div>
+<div id="ignore-missing-values" class="section level4" number="7.3.0.1">
+<h4>
+<span class="header-section-number">7.3.0.1</span> Ignore missing values<a class="anchor" aria-label="anchor" href="#ignore-missing-values"><i class="fas fa-link"></i></a>
+</h4>
+<p>Let's deal with the rt data first. If we try and compute mean rt it returns <code>NA</code>. This is because <code>NA</code> basically means "I don't know", and the sum of 100 and "I don't know" is "I don't know", not 100. However, when you're calculating means, you often want to just ignore missing values. Set <code>na.rm = TRUE</code> in the summary function to remove missing values before calculating.</p>
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># code that will return NA</span>
+<span class="va">dat_missing</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_rt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># ignore missing values to return mean</span>
+<span class="va">dat_missing</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_rt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rt</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:right;">
+mean_rt
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:right;">
+NA
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:right;">
+mean_rt
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:right;">
+471.1353
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="convert-values-to-na" class="section level4" number="7.3.0.2">
+<h4>
+<span class="header-section-number">7.3.0.2</span> Convert values to NA<a class="anchor" aria-label="anchor" href="#convert-values-to-na"><i class="fas fa-link"></i></a>
+</h4>
+<p>For accuracy, if you compute the mean you can see we have a different problem - it does return a number but it's actually wrong because it's including those 0s in the calculation of the mean. This is an important lesson that you should always check your data - jsut because the code runs doesn't mean it's right.</p>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat_missing</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_acc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">acc</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:right;">
+mean_acc
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:right;">
+85.505
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<p>To fix this we need to convert the 0s to NAs (which is what we did to create the missing data for rt) using <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>:</p>
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat_fixed</span> <span class="op">&lt;-</span> <span class="va">dat_missing</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>acc <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">acc</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="cn">NA_real_</span>,
+                         <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">acc</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>We can now calculate accuracy accurately by adding in <code>na.rm = TRUE</code>:</p>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat_fixed</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_acc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">acc</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:right;">
+mean_acc
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:right;">
+90.00526
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="count-missing-values" class="section level4" number="7.3.0.3">
+<h4>
+<span class="header-section-number">7.3.0.3</span> Count missing values<a class="anchor" aria-label="anchor" href="#count-missing-values"><i class="fas fa-link"></i></a>
+</h4>
+<p>If you want to find out how many missing or non-missing values there are in a column, use the <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> function to get a <a class="glossary" target="_blank" title="A data type representing TRUE or FALSE values." href="https://psyteachr.github.io/glossary/l#logical">logical</a> vector of whether or not each value is missing, and use <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> to count how many values are TRUE or <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> to calculate the proportion of TRUE values.</p>
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat_missing</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">condition</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    n_valid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span><span class="op">)</span>,
+    n_missing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span><span class="op">)</span>,
+    prop_missing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+condition
+</th>
+<th style="text-align:right;">
+n_valid
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+prop_missing
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+nonword
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+word
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div id="omit-missing-values" class="section level4" number="7.3.0.4">
+<h4>
+<span class="header-section-number">7.3.0.4</span> Omit missing values<a class="anchor" aria-label="anchor" href="#omit-missing-values"><i class="fas fa-link"></i></a>
+</h4>
+<p>You may also want to remove rows that have missing values and only work from complete datasets. <code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na()</a></code> will remove any row that has a missing observation. You can use <code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na()</a></code> on the entire dataset which will remove any row that has <em>any</em> missing value, or you can specify to only remove rows that are missing a specific value.</p>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># remove any rows with any missing values</span>
+<span class="va">complete_data</span> <span class="op">&lt;-</span> <span class="va">dat_missing</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="co"># remove any rows that are missing a value for sales</span>
+<span class="va">complete_rt</span> <span class="op">&lt;-</span> <span class="va">dat_missing</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span></code></pre></div>
+<p>Missing data can be quite difficult to deal with depending on how it is represented. As always, no amount of coding expertise can make up for not understanding the structure and idiosyncrasies of your data.</p>
+</div>
+</div>
+<div id="glossary-3-1" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Glossary<a class="anchor" aria-label="anchor" href="#glossary-3-1"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:left;">
+definition
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/b.html#boolean-expression" class="glossary" target="_blank">boolean expression</a>
+</td>
+<td style="text-align:left;">
+An expression that evaluates to TRUE or FALSE.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/d.html#data-wrangling" class="glossary" target="_blank">data wrangling</a>
+</td>
+<td style="text-align:left;">
+The process of preparing data for visualisation and statistical analysis.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/l.html#logical" class="glossary" target="_blank">logical</a>
+</td>
+<td style="text-align:left;">
+A data type representing TRUE or FALSE values.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/m.html#match-operator" class="glossary" target="_blank">match operator</a>
+</td>
+<td style="text-align:left;">
+A binary operator (%in%) that returns a logical vector indicating if there is a match or not for its left operand.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/o.html#operator" class="glossary" target="_blank">operator</a>
+</td>
+<td style="text-align:left;">
+A symbol that performs some mathematical or comparative process.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/s.html#string" class="glossary" target="_blank">string</a>
+</td>
+<td style="text-align:left;">
+A piece of text inside of quotes.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="resources-3-1" class="section level2" number="7.5">
+<h2>
+<span class="header-section-number">7.5</span> Further resources<a class="anchor" aria-label="anchor" href="#resources-3-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">Data transformation cheat sheet</a></li>
+<li>
+<a href="http://r4ds.had.co.nz/transform.html">Chapter 5: Data Transformation</a> in <em>R for Data Science</em>
+</li>
+<li>
+<a href="https://r4ds.had.co.nz/functions.html">Chapter 19: Functions</a> in <em>R for Data Science</em>
+</li>
+<li><a href="https://stringr.tidyverse.org/articles/stringr.html">Introduction to stringr</a></li>
+</ul>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    $(solveme[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    $(selects[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+
+  // open rdrr links externally
+  $("a[href^='https://rdrr.io']").click(function(){
+    window.open(this.href);
+    return false;
+  });
+
+  // visible second sidebar in mobile
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
+});
+</script><div class="chapter-nav">
+<div class="prev"><a href="session-2-2.html"><span class="header-section-number">6</span> Session 2.2</a></div>
+<div class="next"><a href="session-3-2.html"><span class="header-section-number">8</span> Session 3.2</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#session-3-1"><span class="header-section-number">7</span> Session 3.1</a></li>
+<li><a class="nav-link" href="#set-up-2"><span class="header-section-number">7.1</span> Set-up</a></li>
+<li>
+<a class="nav-link" href="#wrangling-functions"><span class="header-section-number">7.2</span> Wrangling functions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#select"><span class="header-section-number">7.2.1</span> Select</a></li>
+<li><a class="nav-link" href="#filter"><span class="header-section-number">7.2.2</span> Filter</a></li>
+<li><a class="nav-link" href="#arrange"><span class="header-section-number">7.2.3</span> Arrange</a></li>
+<li><a class="nav-link" href="#mutate"><span class="header-section-number">7.2.4</span> Mutate</a></li>
+<li><a class="nav-link" href="#dplyr-summarise"><span class="header-section-number">7.2.5</span> Summarise</a></li>
+<li><a class="nav-link" href="#dplyr-groupby"><span class="header-section-number">7.2.6</span> Group By</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#missing-values"><span class="header-section-number">7.3</span> Missing values</a></li>
+<li><a class="nav-link" href="#glossary-3-1"><span class="header-section-number">7.4</span> Glossary</a></li>
+<li><a class="nav-link" href="#resources-3-1"><span class="header-section-number">7.5</span> Further resources</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/07-session3.1.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/07-session3.1.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Intro to R workshop</strong>" was written by Emily Nordmann. It was last built on 2022-07-11.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

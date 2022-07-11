@@ -596,7 +596,34 @@ rownames_to_column(describebytable$monolingual, var = "names")
 </div>
 
 
+## Glossary {#glossary-intro}
 
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:left;"> definition </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> [list](https://psyteachr.github.io/glossary/l.html#list){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A container data type that allows items with different data types to be grouped together. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [pipe](https://psyteachr.github.io/glossary/p.html#pipe){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A way to order your code in a more readable format using the symbol %&gt;% </td>
+  </tr>
+</tbody>
+</table>
+
+
+
+## Further resources {#resources-summary}
+
+* [Data transformation cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)
+* [Chapter 5: Data Transformation ](http://r4ds.had.co.nz/transform.html) in *R for Data Science*
+* [Tidy Text](https://www.tidytextmining.com/index.html)
 
 
 

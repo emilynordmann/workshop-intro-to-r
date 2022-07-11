@@ -121,10 +121,9 @@ packages <- c(
   "tidyverse",  # for everything
   "psych",      # for some useful things
   "patchwork",  # for multi-part plots
-  "ggthemes",   # for themed plots
   "devtools",   # for installing github packages
   "correlation", # for correlations
-  "performance" # for checking assumptions
+  "performance" # for checking model assumptions
 )
 
 # determine which need to be installed

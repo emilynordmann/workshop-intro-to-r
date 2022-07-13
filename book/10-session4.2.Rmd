@@ -80,10 +80,10 @@ class
 How would you find out the maximum sales for each region?
 
 ```{r, results='asis', echo = FALSE}
-c(answer = "<pre>budget3 %>%\n  group_by(region) %>%\n  summarise(max_sales = max(sales)</pre>",
-  x = "<pre>budget3 %>%\n  group_by(region) %>%\n  summarise(max_sales = max(region)</pre>",
-  x = "<pre>budget3 %>%\n  group_by(sales) %>%\n  summarise(max_sales = max(sales)</pre>",
-  x = "<pre>budget3 %>%\n  group_by(sales) %>%\n  summarise(max_sales = max(region)</pre>") %>%
+c(answer = "<pre>budget3 %>%\n  group_by(region) %>%\n  summarise(max_sales = max(sales))</pre>",
+  x = "<pre>budget3 %>%\n  group_by(region) %>%\n  summarise(max_sales = max(region))</pre>",
+  x = "<pre>budget3 %>%\n  group_by(sales) %>%\n  summarise(max_sales = max(sales))</pre>",
+  x = "<pre>budget3 %>%\n  group_by(sales) %>%\n  summarise(max_sales = max(region))</pre>") %>%
   sample() %>% webexercises::longmcq() %>% cat()
 ```
 

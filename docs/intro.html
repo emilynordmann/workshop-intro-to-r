@@ -215,20 +215,20 @@ Figure 2.1: The RStudio IDE
 <p>Never install a package from inside a script. Only do this from the console pane.</p>
 </div>
 <p>You can also install multiple packages at once. Here is the command to install all of the packages we'll be using in this workshop - copy, paste and run all the below code. It will install all necessary packages</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">packages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-  <span class="st">"tidyverse"</span>,  <span class="co"># for everything</span>
-  <span class="st">"psych"</span>,      <span class="co"># for some useful things</span>
-  <span class="st">"patchwork"</span>,  <span class="co"># for multi-part plots</span>
-  <span class="st">"devtools"</span>,   <span class="co"># for installing github packages</span>
-  <span class="st">"correlation"</span>, <span class="co"># for correlations</span>
-  <span class="st">"performance"</span> <span class="co"># for checking model assumptions</span>
-<span class="op">)</span>
-
-<span class="co"># determine which need to be installed</span>
-<span class="va">new_packages</span> <span class="op">&lt;-</span> <span class="va">packages</span><span class="op">[</span><span class="op">!</span><span class="va">packages</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">]</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">new_packages</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro.html#cb13-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb13-2"><a href="intro.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse"</span>,  <span class="co"># for everything</span></span>
+<span id="cb13-3"><a href="intro.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"psych"</span>,      <span class="co"># for some useful things</span></span>
+<span id="cb13-4"><a href="intro.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"patchwork"</span>,  <span class="co"># for multi-part plots</span></span>
+<span id="cb13-5"><a href="intro.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ggthemes"</span>    <span class="co"># for plot themes</span></span>
+<span id="cb13-6"><a href="intro.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"devtools"</span>,   <span class="co"># for installing github packages</span></span>
+<span id="cb13-7"><a href="intro.html#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"correlation"</span>, <span class="co"># for correlations</span></span>
+<span id="cb13-8"><a href="intro.html#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"performance"</span> <span class="co"># for checking model assumptions</span></span>
+<span id="cb13-9"><a href="intro.html#cb13-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-10"><a href="intro.html#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="intro.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># determine which need to be installed</span></span>
+<span id="cb13-12"><a href="intro.html#cb13-12" aria-hidden="true" tabindex="-1"></a>new_packages <span class="ot">&lt;-</span> packages[<span class="sc">!</span>packages <span class="sc">%in%</span> <span class="fu">installed.packages</span>()]</span>
+<span id="cb13-13"><a href="intro.html#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="intro.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(new_packages)</span></code></pre></div>
 <p>Once you have the <code class="package">devtools</code> package, you can also install packages from repositories other than CRAN, such as github. The following code installs the development version of a package for making waffle plots and the introdataviz package which contains code to make some advanced plots - copy, paste and run the below code.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"hrbrmstr/waffle"</span><span class="op">)</span>
@@ -987,7 +987,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to R workshop</strong>" was written by Emily Nordmann. It was last built on 2022-07-13.</p>
+    <p>"<strong>Intro to R workshop</strong>" was written by Emily Nordmann. It was last built on 2022-07-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -11,16 +11,16 @@
 What are the resulting columns for these four examples?
 
 * `budget %>% select(contains("_"))`
-    <div class='webex-radiogroup' id='radio_MTFBFXIRXU'><label><input type="radio" autocomplete="off" name="radio_MTFBFXIRXU" value="x"></input> <span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_MTFBFXIRXU" value="x"></input> <span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_MTFBFXIRXU" value="answer"></input> <span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_MTFBFXIRXU" value="x"></input> <span>expenses_2019, expenses_2020</span></label></div>
+    <div class='webex-radiogroup' id='radio_XLXICQXYDB'><label><input type="radio" autocomplete="off" name="radio_XLXICQXYDB" value="x"></input> <span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_XLXICQXYDB" value="x"></input> <span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_XLXICQXYDB" value="answer"></input> <span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_XLXICQXYDB" value="x"></input> <span>expenses_2019, expenses_2020</span></label></div>
 
 * `budget %>% select(num_range("expenses_", 2019:2020))`
-    <div class='webex-radiogroup' id='radio_QFDPBRZMWM'><label><input type="radio" autocomplete="off" name="radio_QFDPBRZMWM" value="x"></input> <span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_QFDPBRZMWM" value="x"></input> <span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_QFDPBRZMWM" value="x"></input> <span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_QFDPBRZMWM" value="answer"></input> <span>expenses_2019, expenses_2020</span></label></div>
+    <div class='webex-radiogroup' id='radio_KEAPNPTUXY'><label><input type="radio" autocomplete="off" name="radio_KEAPNPTUXY" value="x"></input> <span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_KEAPNPTUXY" value="x"></input> <span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_KEAPNPTUXY" value="x"></input> <span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_KEAPNPTUXY" value="answer"></input> <span>expenses_2019, expenses_2020</span></label></div>
 
 * `budget %>% select(starts_with("sales"))`
-    <div class='webex-radiogroup' id='radio_ASBJSWKLOR'><label><input type="radio" autocomplete="off" name="radio_ASBJSWKLOR" value="answer"></input> <span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_ASBJSWKLOR" value="x"></input> <span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_ASBJSWKLOR" value="x"></input> <span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_ASBJSWKLOR" value="x"></input> <span>expenses_2019, expenses_2020</span></label></div>
+    <div class='webex-radiogroup' id='radio_HPIHRTXHKB'><label><input type="radio" autocomplete="off" name="radio_HPIHRTXHKB" value="answer"></input> <span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_HPIHRTXHKB" value="x"></input> <span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_HPIHRTXHKB" value="x"></input> <span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_HPIHRTXHKB" value="x"></input> <span>expenses_2019, expenses_2020</span></label></div>
  
 * `budget %>% select(ends_with("2020"))`
-    <div class='webex-radiogroup' id='radio_EDNLYIVTVO'><label><input type="radio" autocomplete="off" name="radio_EDNLYIVTVO" value="x"></input> <span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_EDNLYIVTVO" value="answer"></input> <span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_EDNLYIVTVO" value="x"></input> <span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_EDNLYIVTVO" value="x"></input> <span>expenses_2019, expenses_2020</span></label></div>
+    <div class='webex-radiogroup' id='radio_TELQJYGZFN'><label><input type="radio" autocomplete="off" name="radio_TELQJYGZFN" value="x"></input> <span>sales_2019, sales_2020</span></label><label><input type="radio" autocomplete="off" name="radio_TELQJYGZFN" value="answer"></input> <span>sales_2020, expenses_2020, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_TELQJYGZFN" value="x"></input> <span>sales_2019, sales_2020, expenses_2019, expenses_2020, satisfaction_2019, satisfaction_2020</span></label><label><input type="radio" autocomplete="off" name="radio_TELQJYGZFN" value="x"></input> <span>expenses_2019, expenses_2020</span></label></div>
 
 :::
 
@@ -82,14 +82,14 @@ Which IDs are kept from the table below?
 ::: {.try data-latex=""}
 How would you find out the maximum sales for each region?
 
-<div class='webex-radiogroup' id='radio_ORYVDGIYBD'><label><input type="radio" autocomplete="off" name="radio_ORYVDGIYBD" value="answer"></input> <span><pre>budget3 %>%
-  group_by(region) %>%
-  summarise(max_sales = max(sales))</pre></span></label><label><input type="radio" autocomplete="off" name="radio_ORYVDGIYBD" value="x"></input> <span><pre>budget3 %>%
+<div class='webex-radiogroup' id='radio_YEOBHSESYI'><label><input type="radio" autocomplete="off" name="radio_YEOBHSESYI" value="x"></input> <span><pre>budget3 %>%
   group_by(sales) %>%
-  summarise(max_sales = max(region))</pre></span></label><label><input type="radio" autocomplete="off" name="radio_ORYVDGIYBD" value="x"></input> <span><pre>budget3 %>%
-  group_by(sales) %>%
-  summarise(max_sales = max(sales))</pre></span></label><label><input type="radio" autocomplete="off" name="radio_ORYVDGIYBD" value="x"></input> <span><pre>budget3 %>%
+  summarise(max_sales = max(sales))</pre></span></label><label><input type="radio" autocomplete="off" name="radio_YEOBHSESYI" value="x"></input> <span><pre>budget3 %>%
   group_by(region) %>%
+  summarise(max_sales = max(region))</pre></span></label><label><input type="radio" autocomplete="off" name="radio_YEOBHSESYI" value="answer"></input> <span><pre>budget3 %>%
+  group_by(region) %>%
+  summarise(max_sales = max(sales))</pre></span></label><label><input type="radio" autocomplete="off" name="radio_YEOBHSESYI" value="x"></input> <span><pre>budget3 %>%
+  group_by(sales) %>%
   summarise(max_sales = max(region))</pre></span></label></div>
 
 :::
